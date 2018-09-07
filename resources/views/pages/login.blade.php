@@ -151,12 +151,28 @@
 						<hr>
 
 						<div class="form-group">
-							 <button type="submit" class="btn btn-primary">
+							 <button type="submit" class="btn bg-orange">
                                     {{ __('Login') }}
                              </button>
+
+                             <a class = "btn bg-orange" href="{{ route('register') }}">{{ __('Register') }}</a>
+
+                          
 						</div>
+
 						
 					</form>
+
+
+				  				{{-- 	<a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form> --}}
 
 				</div>
 			</div>
