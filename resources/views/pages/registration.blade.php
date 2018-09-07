@@ -86,7 +86,7 @@
 				<form method="POST">
 
 					<div class="row mt-4">
-						
+
 						<div class="col-md-12 mb-3">
 							<div class="form-group">
 								<label>Full Name</label>
@@ -117,7 +117,7 @@
 
 						<div class="col-md-12 mb-3">
 							<div class="form-group">
-								<button class="btn btn-primary">Submit</button>
+								<button class="btn bg-orange">Submit</button>
 							</div>
 						</div>
 					</div>
