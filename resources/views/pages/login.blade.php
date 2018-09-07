@@ -154,6 +154,7 @@
 						<hr>
 
 						<div class="form-group">
+<<<<<<< HEAD
 							<button type="submit" class="btn btn-primary btn-lg bg-orange">
 								{{ __('Login') }}
 							</button>
@@ -161,8 +162,30 @@
 
 						<label>Doesn't have an account?</label>
 						<h6 id="registration"><a href="#">Create one.</a></h6>
+=======
+							 <button type="submit" class="btn bg-orange">
+                                    {{ __('Login') }}
+                             </button>
+
+                             <a class = "btn bg-orange" href="{{ route('register') }}">{{ __('Register') }}</a>
+
+                          
+						</div>
+
+>>>>>>> 8b8e2a82ed72c5cdc6be1ef6fcec6467e7944b89
 						
 					</form>
+
+
+				  				{{-- 	<a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form> --}}
 
 				</div>
 
