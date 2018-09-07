@@ -70,8 +70,6 @@
 </style>
 
 </head>
-
-
 <body>
 
 	<div class="fluid w-100">
@@ -111,113 +109,41 @@
 
 		<div id="login" class="col-lg-4 col-md-12 col-xs-12 col-sm-12 bg-white p-50" style="height: 100vh; padding: 50px; ">
 			<div class="row mt-5 mb-5">
+				<div id="login" class="col-lg-12">
 
-				<img class="mt-5 mb-5" src="{{asset('img/logo/ezpayplus.svg')}}" style="height: 60px;">
-
-				<div class="col-lg-12 login_form">
-
-					<form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
+					<form id="login_form" method="POST">
 
 						{{-- <h1>Ez Pay Plus</h1> --}}
 
-						<h6>Please enter your credentials</h6>
+						<img src="{{asset('img/logo/ezpayplus.svg')}}" style="height: 60px;">
+
+						<h5>Please enter your credentials</h5>
 
 						<hr>
 
 						<div class="form-group">
 							<label>Username</label>
-							<input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
-
-							@if ($errors->has('email'))
-							<span class="invalid-feedback" role="alert">
-								<strong>{{ $errors->first('email') }}</strong>
-							</span>
-							@endif
+							<input type="text" class="form-control" name="uname">
 						</div>
 
 						<div class="form-group">
 							<label>Password</label>
-							<input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-							@if ($errors->has('password'))
-							<span class="invalid-feedback" role="alert">
-								<strong>{{ $errors->first('password') }}</strong>
-							</span>
-							@endif
-
-
-							<input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-
+							<input type="password" class="form-control" name="password">
 						</div>
 
 						<hr>
 
 						<div class="form-group">
-							<button type="submit" class="btn btn-primary btn-lg bg-orange">
-								{{ __('Login') }}
-							</button>
+							<button class="btn bg-orange btn-block">LOG IN</button>
 						</div>
-
-						<label>Doesn't have an account?</label>
-						<h6 id="registration"><a href="#">Create one.</a></h6>
 						
 					</form>
 
 				</div>
 
-				<div class="col-lg-12 registraion_form" style="display: none;">
-					<h6>Register an account</h6>
-					<hr>
-
-					<form method="POST">
-
-						<div class="row mt-4">
-
-							<div class="col-md-12 mb-3">
-								<div class="form-group">
-									<label>Full Name</label>
-									<input type="text" class="form-control" name="name">
-								</div>
-							</div>
-
-							<div class="col-md-12 mb-3">
-								<div class="form-group">
-									<label>Email Address</label>
-									<input type="text" class="form-control" name="email">
-								</div>
-							</div>
-
-							<div class="col-md-12 mb-3">
-								<div class="form-group">
-									<label>Password</label>
-									<input type="password" class="form-control" name="password">
-								</div>
-							</div>
-
-							<div class="col-md-12 mb-3">
-								<div class="form-group">
-									<label>Confirm Password</label>
-									<input type="password" class="form-control" name="confirm_password">
-								</div>
-							</div>
-
-							<div class="col-md-12 mb-3">
-
-								<hr style="margin-top: -3px;">
-
-								<div class="form-group">
-									<button class="btn bg-orange btn-lg">Register</button>
-								</div>
-
-								<label>Back to Login</label>
-								<h6 id="login"><a href="#">Click here.</a></h6>
-							</div>
-						</div>
-
-					</form>
+				<div id="registration" class="col-lg-12">
+					<h2>Registration</h2>
 				</div>
-
 			</div>
 
 			<div class="mt-5 mb-5" style="bottom: 0; position: absolute; padding: 10px">
@@ -239,19 +165,7 @@
 <script type="text/javascript" src="{{asset('js/solid.min.js')}}"></script>
 
 <script type="text/javascript">
-	$("#registration").on("click", function(){
-		jQuery(".login_form").fadeOut(500, function(){
-			$(".login_form").css("display", "none");
-			$(".registraion_form").css("display", "block");
-		});
-	});
-
-	$("#login").on("click", function(){
-		jQuery(".registraion_form").fadeOut(500, function(){
-			$(".login_form").css("display", "block");
-			$(".registraion_form").css("display", "none");
-		});
-	});
+	
 </script>
 
 </html>
