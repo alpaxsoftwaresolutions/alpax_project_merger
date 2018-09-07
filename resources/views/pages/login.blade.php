@@ -106,7 +106,7 @@
 
 					<img class="mt-1 mb-1" src="{{asset('img/logo/ezpayplus.svg')}}" style="height: 60px;">
 
-					<div class="col-lg-12 login_form">
+					<div id="login_form" class="col-lg-12">
 
 						<form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
 
@@ -146,19 +146,19 @@
 							<hr>
 
 							<div class="form-group">
-								<button type="submit" class="btn btn-primary btn-lg bg-orange">
+								<button type="submit" class="btn btn-primary btn-md bg-orange">
 									{{ __('Login') }}
 								</button>
 							</div>
 
 							<label>Doesn't have an account?</label>
 							<h6 id="registration"><a href="#">Create one.</a></h6>
-							
+
 						</form>
 
 					</div>
 
-					<div class="col-lg-12 registraion_form" style="display: none;">
+					<div id="registraion_form" class="col-lg-12" style="display: none;">
 						<h6>Register an account</h6>
 						<hr>
 
@@ -199,7 +199,7 @@
 									<hr style="margin-top: -3px;">
 
 									<div class="form-group">
-										<button class="btn bg-orange btn-lg">Register</button>
+										<button class="btn bg-orange btn-md">Register</button>
 									</div>
 
 									<label>Back to Login</label>
@@ -232,16 +232,16 @@
 
 	<script type="text/javascript">
 		$("#registration").on("click", function(){
-			jQuery(".login_form").fadeOut(500, function(){
-				$(".login_form").css("display", "none");
-				$(".registraion_form").css("display", "block");
+			jQuery("#login_form").fadeOut(500, function(){
+				$("#login_form").css("display", "none");
+				$("#registraion_form").css("display", "block");
 			});
 		});
 
 		$("#login").on("click", function(){
-			jQuery(".registraion_form").fadeOut(500, function(){
-				$(".login_form").css("display", "block");
-				$(".registraion_form").css("display", "none");
+			jQuery("#registraion_form").fadeOut(500, function(){
+				$("#login_form").css("display", "block");
+				$("#registraion_form").css("display", "none");
 			});
 		});
 	</script>
