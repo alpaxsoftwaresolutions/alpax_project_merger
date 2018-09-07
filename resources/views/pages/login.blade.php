@@ -70,6 +70,8 @@
 </style>
 
 </head>
+
+
 <body>
 
 	<div class="fluid w-100">
@@ -111,7 +113,7 @@
 			<div class="row mt-5 mb-5">
 				<div class="col-lg-12">
 
-					<form id="login_form" method="POST">
+					<form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
 
 						{{-- <h1>Ez Pay Plus</h1> --}}
 
@@ -121,18 +123,37 @@
 
 						<div class="form-group">
 							<label>Username</label>
-							<input type="text" class="form-control" name="uname">
+							<input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+
+                                @if ($errors->has('email'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
 						</div>
 
 						<div class="form-group">
 							<label>Password</label>
-							<input type="password" class="form-control" name="password">
+							<input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+
+                                @if ($errors->has('password'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+
+
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+
 						</div>
 
 						<hr>
 
 						<div class="form-group">
-							<button class="btn bg-orange btn-block">LOG IN</button>
+							 <button type="submit" class="btn btn-primary">
+                                    {{ __('Login') }}
+                             </button>
 						</div>
 						
 					</form>
