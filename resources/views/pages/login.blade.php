@@ -101,7 +101,7 @@
 				</div>
 			</div>
 
-			<div id="login" class="col-lg-4 col-md-12 col-xs-12 col-sm-12 bg-white p-50" style="height: 100vh; padding: 50px; ">
+			<div class="col-lg-4 col-md-12 col-xs-12 col-sm-12 bg-white p-50" style="height: 100vh; padding: 50px; ">
 				<div class="row mt-5 mb-5">
 
 					<img class="mt-1 mb-1" src="{{asset('img/logo/ezpayplus.svg')}}" style="height: 60px;">
