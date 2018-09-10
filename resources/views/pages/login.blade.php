@@ -162,36 +162,57 @@
 						<h6>Register an account</h6>
 						<hr>
 
-						<form method="POST">
+						<form class="form-horizontal" method="POST" action="{{ route('register') }}">
 
 							<div class="row mt-4">
 
 								<div class="col-md-12 mb-3">
 									<div class="form-group">
 										<label>Full Name</label>
-										<input type="text" class="form-control" name="name">
+										<input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+
+			                                @if ($errors->has('name'))
+			                                    <span class="help-block">
+			                                        <strong>{{ $errors->first('name') }}</strong>
+			                                    </span>
+			                                @endif
 									</div>
 								</div>
 
 								<div class="col-md-12 mb-3">
 									<div class="form-group">
 										<label>Email Address</label>
-										<input type="text" class="form-control" name="email">
+										<input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+
+		                                @if ($errors->has('email'))
+		                                    <span class="help-block">
+		                                        <strong>{{ $errors->first('email') }}</strong>
+		                                    </span>
+		                                @endif
 									</div>
 								</div>
 
 								<div class="col-md-12 mb-3">
 									<div class="form-group">
 										<label>Password</label>
-										<input type="password" class="form-control" name="password">
+										<input id="password" type="password" class="form-control" name="password" required>
+
+		                                @if ($errors->has('password'))
+		                                    <span class="help-block">
+		                                        <strong>{{ $errors->first('password') }}</strong>
+		                                    </span>
+		                                @endif
 									</div>
 								</div>
 
 								<div class="col-md-12 mb-3">
 									<div class="form-group">
 										<label>Confirm Password</label>
-										<input type="password" class="form-control" name="confirm_password">
+										<input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
 									</div>
+
+									<input type="hidden" name="_token" value="{{ csrf_token() }}">
+									
 								</div>
 
 								<div class="col-md-12 mb-3">
@@ -199,7 +220,9 @@
 									<hr style="margin-top: -3px;">
 
 									<div class="form-group">
-										<button class="btn bg-orange btn-md">Register</button>
+										<button type="submit" class="btn btn-primary">
+	                                    Register
+	                                </button>
 									</div>
 
 									<label>Back to Login</label>
