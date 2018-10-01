@@ -12,12 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('pages.login');
+    return view('pages.home');
 });
 
-Route::get('/register', function(){
-	return view('pages.registration');
-});
+Route::get('/insert-module','PagesController@insert_module');
 
 Auth::routes();
 
