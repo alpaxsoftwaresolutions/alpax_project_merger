@@ -1,18 +1,22 @@
 <!--Sidebar -->
 <nav id="sidebar">
-	<ul class="list-unstyled components">
+	{!!html_entity_decode($sidebar)!!}
+	{{-- <ul class="list-unstyled components">
+		{!!html_entity_decode($dashboard)!!}
+		@foreach($dashboard as $dash)
+			<li class="">
+				<a href="{{ $dash->id }}" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle" style="text-align: center"><img style="height: 70px;">{{ $dash->name }}</a>
+				@foreach($dash->item as $item)
+					<ul class="collapse list-unstyled show" id="{{ $item->parent_id }}">
 
-		<li class="">
-			<a href="#1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="text-align: center"><img style="height: 70px;">Sample</a>
-			<ul class="collapse list-unstyled" id="1">
-
-				<li class="">
-					<a href="#"><img src="{{asset('img/nav_icons/speedometer.svg')}}" style="height: 20px; margin-right: 10px;">Dashboard</a>
-				</li>
-			</ul>
-		</li>
-
-	</ul>
+						<li class="">
+							<a href="#"><img src="{{asset('img/nav_icons/speedometer.svg')}}" style="height: 20px; margin-right: 10px;">Dashboard</a>
+						</li>
+					</ul>
+				@endforeach
+			</li>
+		@endforeach
+	</ul> --}}
 
 	<ul class="list-unstyled CTAs">
 		<li>

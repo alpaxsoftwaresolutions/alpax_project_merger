@@ -18,7 +18,7 @@ class CreateAuthenticationsTable extends Migration
             $table->string('name');
             $table->integer('order_id');
             $table->string('icon');
-            $table->integer('parent_id');
+            $table->integer('parent_id')->default(0);
             $table->string('path');
             $table->string('type');
             $table->timestamps();
