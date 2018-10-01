@@ -189,6 +189,7 @@ class InlineFragmentRendererTest extends TestCase
         $this->assertEquals('Foo', ob_get_clean());
     }
 
+<<<<<<< HEAD
     public function testLocaleAndFormatAreIsKeptInSubrequest()
     {
         $expectedSubRequest = Request::create('/');
@@ -209,6 +210,8 @@ class InlineFragmentRendererTest extends TestCase
         $strategy->render('/', $request);
     }
 
+=======
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
     public function testESIHeaderIsKeptInSubrequest()
     {
         $expectedSubRequest = Request::create('/');

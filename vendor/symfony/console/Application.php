@@ -162,8 +162,11 @@ class Application
             } else {
                 $exitCode = 1;
             }
+<<<<<<< HEAD
 
             return $exitCode;
+=======
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
         } finally {
             // if the exception handler changed, keep it
             // otherwise, unregister $renderException

@@ -47,7 +47,13 @@ class MemcacheSessionHandler implements \SessionHandlerInterface
     public function __construct(\Memcache $memcache, array $options = array())
     {
         if ($diff = array_diff(array_keys($options), array('prefix', 'expiretime'))) {
+<<<<<<< HEAD
             throw new \InvalidArgumentException(sprintf('The following options are not supported "%s"', implode(', ', $diff)));
+=======
+            throw new \InvalidArgumentException(sprintf(
+                'The following options are not supported "%s"', implode(', ', $diff)
+            ));
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
         }
 
         $this->memcache = $memcache;

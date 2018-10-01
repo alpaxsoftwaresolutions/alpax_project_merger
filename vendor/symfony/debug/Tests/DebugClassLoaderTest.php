@@ -312,21 +312,39 @@ class DebugClassLoaderTest extends TestCase
 
     public function testExtendedFinalMethod()
     {
+<<<<<<< HEAD
         $deprecations = array();
         set_error_handler(function ($type, $msg) use (&$deprecations) { $deprecations[] = $msg; });
         $e = error_reporting(E_USER_DEPRECATED);
+=======
+        set_error_handler(function () { return false; });
+        $e = error_reporting(0);
+        trigger_error('', E_USER_NOTICE);
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
 
         class_exists(__NAMESPACE__.'\\Fixtures\\ExtendedFinalMethod', true);
 
         error_reporting($e);
         restore_error_handler();
 
+<<<<<<< HEAD
         $xError = array(
             'The "Symfony\Component\Debug\Tests\Fixtures\FinalMethod::finalMethod()" method is considered final since version 3.3. It may change without further notice as of its next major version. You should not extend it from "Symfony\Component\Debug\Tests\Fixtures\ExtendedFinalMethod".',
             'The "Symfony\Component\Debug\Tests\Fixtures\FinalMethod::finalMethod2()" method is considered final. It may change without further notice as of its next major version. You should not extend it from "Symfony\Component\Debug\Tests\Fixtures\ExtendedFinalMethod".',
         );
 
         $this->assertSame($xError, $deprecations);
+=======
+        $lastError = error_get_last();
+        unset($lastError['file'], $lastError['line']);
+
+        $xError = array(
+            'type' => E_USER_DEPRECATED,
+            'message' => 'The "Symfony\Component\Debug\Tests\Fixtures\FinalMethod::finalMethod()" method is considered final since version 3.3. It may change without further notice as of its next major version. You should not extend it from "Symfony\Component\Debug\Tests\Fixtures\ExtendedFinalMethod".',
+        );
+
+        $this->assertSame($xError, $lastError);
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
     }
 
     public function testExtendedDeprecatedMethodDoesntTriggerAnyNotice()
@@ -358,6 +376,7 @@ class DebugClassLoaderTest extends TestCase
         restore_error_handler();
 
         $this->assertSame($deprecations, array(
+<<<<<<< HEAD
             'The "Symfony\Component\Debug\Tests\Fixtures\InternalInterface" interface is considered internal. It may change without further notice. You should not use it from "Test\Symfony\Component\Debug\Tests\ExtendsInternalsParent".',
             'The "Symfony\Component\Debug\Tests\Fixtures\InternalClass" class is considered internal since version 3.4. It may change without further notice. You should not use it from "Test\Symfony\Component\Debug\Tests\ExtendsInternalsParent".',
             'The "Symfony\Component\Debug\Tests\Fixtures\InternalTrait" trait is considered internal. It may change without further notice. You should not use it from "Test\Symfony\Component\Debug\Tests\ExtendsInternals".',
@@ -378,6 +397,14 @@ class DebugClassLoaderTest extends TestCase
 
         $this->assertSame(array(), $deprecations);
     }
+=======
+            'The "Symfony\Component\Debug\Tests\Fixtures\InternalClass" class is considered internal since version 3.4. It may change without further notice. You should not use it from "Test\Symfony\Component\Debug\Tests\ExtendsInternalsParent".',
+            'The "Symfony\Component\Debug\Tests\Fixtures\InternalInterface" interface is considered internal. It may change without further notice. You should not use it from "Test\Symfony\Component\Debug\Tests\ExtendsInternalsParent".',
+            'The "Symfony\Component\Debug\Tests\Fixtures\InternalTrait" trait is considered internal. It may change without further notice. You should not use it from "Test\Symfony\Component\Debug\Tests\ExtendsInternals".',
+            'The "Symfony\Component\Debug\Tests\Fixtures\InternalTrait2::internalMethod()" method is considered internal since version 3.4. It may change without further notice. You should not extend it from "Test\Symfony\Component\Debug\Tests\ExtendsInternals".',
+        ));
+    }
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
 }
 
 class ClassLoader
@@ -431,8 +458,11 @@ class ClassLoader
             }');
         } elseif ('Test\\'.__NAMESPACE__.'\ExtendsInternalsParent' === $class) {
             eval('namespace Test\\'.__NAMESPACE__.'; class ExtendsInternalsParent extends \\'.__NAMESPACE__.'\Fixtures\InternalClass implements \\'.__NAMESPACE__.'\Fixtures\InternalInterface { }');
+<<<<<<< HEAD
         } elseif ('Test\\'.__NAMESPACE__.'\UseTraitWithInternalMethod' === $class) {
             eval('namespace Test\\'.__NAMESPACE__.'; class UseTraitWithInternalMethod { use \\'.__NAMESPACE__.'\Fixtures\TraitWithInternalMethod; }');
+=======
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
         }
     }
 }

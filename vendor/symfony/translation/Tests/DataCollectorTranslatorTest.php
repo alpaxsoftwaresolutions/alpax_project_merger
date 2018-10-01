@@ -31,6 +31,7 @@ class DataCollectorTranslatorTest extends TestCase
 
         $expectedMessages = array();
         $expectedMessages[] = array(
+<<<<<<< HEAD
             'id' => 'foo',
             'translation' => 'foo (en)',
             'locale' => 'en',
@@ -74,6 +75,51 @@ class DataCollectorTranslatorTest extends TestCase
             'state' => DataCollectorTranslator::MESSAGE_EQUALS_FALLBACK,
             'parameters' => array('foo' => 'bar'),
             'transChoiceNumber' => null,
+=======
+              'id' => 'foo',
+              'translation' => 'foo (en)',
+              'locale' => 'en',
+              'domain' => 'messages',
+              'state' => DataCollectorTranslator::MESSAGE_DEFINED,
+              'parameters' => array(),
+              'transChoiceNumber' => null,
+        );
+        $expectedMessages[] = array(
+              'id' => 'bar',
+              'translation' => 'bar (fr)',
+              'locale' => 'fr',
+              'domain' => 'messages',
+              'state' => DataCollectorTranslator::MESSAGE_EQUALS_FALLBACK,
+              'parameters' => array(),
+              'transChoiceNumber' => null,
+        );
+        $expectedMessages[] = array(
+              'id' => 'choice',
+              'translation' => 'choice',
+              'locale' => 'en',
+              'domain' => 'messages',
+              'state' => DataCollectorTranslator::MESSAGE_MISSING,
+              'parameters' => array(),
+              'transChoiceNumber' => 0,
+        );
+        $expectedMessages[] = array(
+              'id' => 'bar_ru',
+              'translation' => 'bar (ru)',
+              'locale' => 'ru',
+              'domain' => 'messages',
+              'state' => DataCollectorTranslator::MESSAGE_EQUALS_FALLBACK,
+              'parameters' => array(),
+              'transChoiceNumber' => null,
+        );
+        $expectedMessages[] = array(
+              'id' => 'bar_ru',
+              'translation' => 'bar (ru)',
+              'locale' => 'ru',
+              'domain' => 'messages',
+              'state' => DataCollectorTranslator::MESSAGE_EQUALS_FALLBACK,
+              'parameters' => array('foo' => 'bar'),
+              'transChoiceNumber' => null,
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
         );
 
         $this->assertEquals($expectedMessages, $collector->getCollectedMessages());

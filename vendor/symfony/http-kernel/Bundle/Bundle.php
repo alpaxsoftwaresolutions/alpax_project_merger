@@ -34,21 +34,35 @@ abstract class Bundle implements BundleInterface
     private $namespace;
 
     /**
+<<<<<<< HEAD
      * {@inheritdoc}
+=======
+     * Boots the Bundle.
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
      */
     public function boot()
     {
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritdoc}
+=======
+     * Shutdowns the Bundle.
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
      */
     public function shutdown()
     {
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritdoc}
+=======
+     * Builds the bundle.
+     *
+     * It is only ever called once when the cache is empty.
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
      *
      * This method can be overridden to register compilation passes,
      * other extensions, ...
@@ -79,7 +93,14 @@ abstract class Bundle implements BundleInterface
                 $expectedAlias = Container::underscore($basename);
 
                 if ($expectedAlias != $extension->getAlias()) {
+<<<<<<< HEAD
                     throw new \LogicException(sprintf('Users will expect the alias of the default extension of a bundle to be the underscored version of the bundle name ("%s"). You can override "Bundle::getContainerExtension()" if you want to use "%s" or another alias.', $expectedAlias, $extension->getAlias()));
+=======
+                    throw new \LogicException(sprintf(
+                        'Users will expect the alias of the default extension of a bundle to be the underscored version of the bundle name ("%s"). You can override "Bundle::getContainerExtension()" if you want to use "%s" or another alias.',
+                        $expectedAlias, $extension->getAlias()
+                    ));
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
                 }
 
                 $this->extension = $extension;
@@ -94,7 +115,13 @@ abstract class Bundle implements BundleInterface
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritdoc}
+=======
+     * Gets the Bundle namespace.
+     *
+     * @return string The Bundle namespace
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
      */
     public function getNamespace()
     {
@@ -106,7 +133,13 @@ abstract class Bundle implements BundleInterface
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritdoc}
+=======
+     * Gets the Bundle directory path.
+     *
+     * @return string The Bundle absolute path
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
      */
     public function getPath()
     {
@@ -119,14 +152,26 @@ abstract class Bundle implements BundleInterface
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritdoc}
+=======
+     * Returns the bundle parent name.
+     *
+     * @return string|null The Bundle parent name it overrides or null if no parent
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
      */
     public function getParent()
     {
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritdoc}
+=======
+     * Returns the bundle name (the class short name).
+     *
+     * @return string The Bundle name
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
      */
     final public function getName()
     {

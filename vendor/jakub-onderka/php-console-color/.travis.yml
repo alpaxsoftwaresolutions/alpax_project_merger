@@ -1,6 +1,7 @@
 language: php
 
 php:
+<<<<<<< HEAD
   - 5.4
   - 5.5
   - 5.6
@@ -17,8 +18,21 @@ cache:
 
 before_script:
   - composer install --no-interaction --prefer-source
+=======
+  - 5.3.3
+  - 5.4
+  - 5.5
+
+before_script:
+  - composer self-update
+  - composer install --no-interaction --prefer-source --dev
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
 
 script:
   - ant phplint
   - ant phpcs
+<<<<<<< HEAD
   - ant phpunit
+=======
+  - ant phpunit
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b

@@ -66,6 +66,7 @@ class ServiceValueResolverTest extends TestCase
         $this->assertYieldEquals(array(new DummyService()), $resolver->resolve($request, $argument));
     }
 
+<<<<<<< HEAD
     public function testExistingControllerWithMethodNameStartUppercase()
     {
         $resolver = new ServiceValueResolver(new ServiceLocator(array(
@@ -84,6 +85,8 @@ class ServiceValueResolverTest extends TestCase
         $this->assertYieldEquals(array(new DummyService()), $resolver->resolve($request, $argument));
     }
 
+=======
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
     public function testControllerNameIsAnArray()
     {
         $resolver = new ServiceValueResolver(new ServiceLocator(array(

@@ -14,6 +14,7 @@ namespace Symfony\Component\Finder;
 /**
  * Glob matches globbing patterns against text.
  *
+<<<<<<< HEAD
  *     if match_glob("foo.*", "foo.bar") echo "matched\n";
  *
  *     // prints foo.bar and foo.baz
@@ -22,6 +23,16 @@ namespace Symfony\Component\Finder;
  *     {
  *         if (/$regex/) echo "matched: $car\n";
  *     }
+=======
+ *   if match_glob("foo.*", "foo.bar") echo "matched\n";
+ *
+ * // prints foo.bar and foo.baz
+ * $regex = glob_to_regex("foo.*");
+ * for (array('foo.bar', 'foo.baz', 'foo', 'bar') as $t)
+ * {
+ *   if (/$regex/) echo "matched: $car\n";
+ * }
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
  *
  * Glob implements glob(3) style matching that can be used to match
  * against text, rather than fetching names from a filesystem.

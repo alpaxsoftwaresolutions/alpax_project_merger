@@ -121,8 +121,12 @@ class ArgvInput extends Input
         $len = \strlen($name);
         for ($i = 0; $i < $len; ++$i) {
             if (!$this->definition->hasShortcut($name[$i])) {
+<<<<<<< HEAD
                 $encoding = mb_detect_encoding($name, null, true);
                 throw new RuntimeException(sprintf('The "-%s" option does not exist.', false === $encoding ? $name[$i] : mb_substr($name, $i, 1, $encoding)));
+=======
+                throw new RuntimeException(sprintf('The "-%s" option does not exist.', $name[$i]));
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
             }
 
             $option = $this->definition->getOptionForShortcut($name[$i]);

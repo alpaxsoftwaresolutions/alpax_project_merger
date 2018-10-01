@@ -81,9 +81,14 @@ class Client extends BaseClient
      */
     protected function getScript($request)
     {
+<<<<<<< HEAD
         $kernel = var_export(serialize($this->kernel), true);
         $request = var_export(serialize($request), true);
 
+=======
+        $kernel = str_replace("'", "\\'", serialize($this->kernel));
+        $request = str_replace("'", "\\'", serialize($request));
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
         $errorReporting = error_reporting();
 
         $requires = '';
@@ -92,7 +97,11 @@ class Client extends BaseClient
                 $r = new \ReflectionClass($class);
                 $file = \dirname(\dirname($r->getFileName())).'/autoload.php';
                 if (file_exists($file)) {
+<<<<<<< HEAD
                     $requires .= 'require_once '.var_export($file, true).";\n";
+=======
+                    $requires .= "require_once '".str_replace("'", "\\'", $file)."';\n";
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
                 }
             }
         }
@@ -108,8 +117,13 @@ error_reporting($errorReporting);
 
 $requires
 
+<<<<<<< HEAD
 \$kernel = unserialize($kernel);
 \$request = unserialize($request);
+=======
+\$kernel = unserialize('$kernel');
+\$request = unserialize('$request');
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
 EOF;
 
         return $code.$this->getHandleScript();

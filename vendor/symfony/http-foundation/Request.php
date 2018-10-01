@@ -1460,7 +1460,11 @@ class Request
      *  * _format request attribute
      *  * $default
      *
+<<<<<<< HEAD
      * @param string|null $default The default format
+=======
+     * @param string $default The default format
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
      *
      * @return string The request format
      */

@@ -86,7 +86,11 @@ class InputArgument
     /**
      * Sets the default value.
      *
+<<<<<<< HEAD
      * @param string|string[] $default The default value
+=======
+     * @param mixed $default The default value
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
      *
      * @throws LogicException When incorrect default value is given
      */
@@ -110,7 +114,11 @@ class InputArgument
     /**
      * Returns the default value.
      *
+<<<<<<< HEAD
      * @return string|string[] The default value
+=======
+     * @return mixed The default value
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
      */
     public function getDefault()
     {
