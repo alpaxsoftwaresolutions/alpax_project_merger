@@ -8,8 +8,21 @@ use App\company;
 class companyController extends Controller
 {
 	public function index(){
-		$company =  company::all()->get();
+		$company =  company::all();
     	return view('pages.company.view',compact('company'));
+	}
+	public function create(){
+		return view('pages.company.form');
+	}
+	public function store(){
+		$company = new company;
+
+	 	$company->name=$request['auth_name'];
+	 	$company->order_id=$request['auth_order'];
+	 	$company->icon=$request['auth_icon'];
+	 	$company->parent_id=$request['auth_parent'];
+	 	$company->path=$request['auth_path'];
+	 	$company->save();
 	}
     public function edit($companyID)
     {
@@ -18,11 +31,12 @@ class companyController extends Controller
     }
     public function update(Request $request,$companyID)
     {
-    	$company =  company::all()->get();
+    	$company =  company::all();
 		return view('pages.company.view',compact('company'));
     }
      public function delete($companyID){
-     	$company =  company::all()->get();
+
+     	$company =  company::all();
 		return view('pages.company.view',compact('company'));
      }
 }
