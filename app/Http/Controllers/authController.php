@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use DB;
 use App\Authentication;
+use App\role;
 use App\AuthenticationItems;
 use Carbon\Carbon;
 
@@ -12,7 +13,11 @@ use Carbon\Carbon;
 class authController extends Controller
 {
 	 public function index(){
-		$auths = Authentication::where('deleted_at', '=', NULL )->get();
+		$auths = DB::table('authentication_items')
+	 		->join('authentications' , 'auth_id', '=','authentications.id')
+	 		->join('roles' , 'authentication_items.role', '=','roles.id')
+	 		->select('authentications.path','authentications.parent_id','authentications.icon','authentications.name','roles.name as name2','authentications.id')
+	 		->get();
 		return view('pages.auth.index',compact('auths'));
 	 }
 	 public function create(){
@@ -62,7 +67,7 @@ class authController extends Controller
 	 public function editItem(Request $request, $authId){
  		$authItems = DB::table('authentication_items')
  		->join('authentications' , 'auth_id', '=','authentications.id')
- 		->select('isVisible','isReadable','isWritable','name')
+ 		->select('isVisible','isReadable','isWritable','authentications.name')
  		->where('authentication_items.auth_id','=', $authId)
  		->get();
 
