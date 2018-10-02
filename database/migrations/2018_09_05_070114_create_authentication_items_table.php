@@ -15,7 +15,7 @@ class CreateAuthenticationItemsTable extends Migration
     {
         Schema::create('authentication_items', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('abs_id');
+            $table->integer('auth_id');
             $table->integer('role')->default(1);
             $table->integer('isVisible');
             $table->integer('isReadable');
