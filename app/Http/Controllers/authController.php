@@ -37,8 +37,8 @@ class authController extends Controller
 		return view('pages.auth.index',compact('auths'));
 	 }
 	 public function edit($authId){
-	 	 $auths_edit = Authentication::where('id', $authId)->get();
-	 	 $auths = Authentication::all();
+	 	$auths_edit = Authentication::where('id', $authId)->get();
+	 	$auths = Authentication::all();
 	 	return view('pages.auth.edit',compact('auths','auths_edit'));
 	 }
 	 public function delete($authId){
@@ -57,6 +57,29 @@ class authController extends Controller
          'path' =>  $request['auth_path_edit']
        ]);
 	 	 $auths = Authentication::where('deleted_at', '=', NULL )->get();
+		return view('pages.auth.index',compact('auths'));
+	}
+	 public function editItem(Request $request, $authId){
+ 		$authItems = DB::table('authentication_items')
+ 		->join('authentications' , 'auth_id', '=','authentications.id')
+ 		->select('isVisible','isReadable','isWritable','name')
+ 		->where('authentication_items.auth_id','=', $authId)
+ 		->get();
+
+
+	 	return view('pages.authItems.edit',compact('authItems'));
+	 }
+	public function updateItem(Request $request, $authId){
+
+		if (isset($request['visible'])){$visible = 1;}else{$visible = 0;}
+ 		if (isset($request['readable'])){$readable = 1;}else{$readable = 0;}
+ 		if (isset($request['writable'])){$writable = 1;}else{$writable = 0;}
+ 		$update_authitems = AuthenticationItems::where('auth_id', $authId)->update([
+           'isVisible' =>  $visible ,
+           'isReadable' => $readable,
+           'isWritable' => $writable
+           ]);
+ 		$auths = Authentication::where('deleted_at', '=', NULL )->get();
 		return view('pages.auth.index',compact('auths'));
 	}
 }
