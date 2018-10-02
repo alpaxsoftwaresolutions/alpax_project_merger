@@ -15,8 +15,6 @@ Route::get('/', function () {
     return view('pages.home');
 });
 
-Route::get('/insert-module','PagesController@insert_module');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -25,7 +23,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/auth/', 'authController@index')->name('index.authentications'); 
+Route::get('/auth', 'authController@index')->name('index.authentications'); 
 //Saving New authentications
 Route::get('/auth/create', 'authController@create')->name('create.authentications'); 
 Route::post('/auth/create', 'authController@store')->name('store.authentications');
@@ -36,4 +34,16 @@ Route::post('/auth/edit/{authId}', 'authController@update')->name('update.authen
 Route::get('/authItems/edit/{authId}', 'authController@editItem')->name('edit.authenticationItems');  
 Route::post('/authItems/edit/{authId}', 'authController@updateItem')->name('update.authenticationItems');
 //Delete authentications
-Route::get('/auth/delete/{authId}', 'authController@delete')->name('delete.authentications'); 
+Route::get('/auth/delete/{authId}', 'authController@delete')->name('delete.authentications');
+
+Route::get('/settings/general_settings', function(){
+	return view('settings.general_settings');
+});
+
+Route::get('/settings/company_profile', function(){
+	return view('settings.company_profile');
+});
+
+Route::get('/settings/roles', function(){
+	return view('settings.roles');
+});

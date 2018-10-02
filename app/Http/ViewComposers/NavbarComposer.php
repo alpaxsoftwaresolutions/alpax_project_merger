@@ -46,7 +46,7 @@ class NavbarComposer{
 				$settings = 'href=#'.$dash->id.' data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"';
 			}
 			else
-				$settings = 'href={{ route("'.$dash->path.'") }}';
+				$settings = 'href="/'.$dash->path.'"';
 			$this->sidebar.='<li class=""><a '.$settings.' >'.$dash->name.'</a>';
 			$this->ulclass ='<ul class="collapse list-unstyled" id="'.$dash->id.'">';
 			$this->count_dashboard($dash->id,$role_id);
