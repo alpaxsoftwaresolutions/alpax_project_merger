@@ -16,7 +16,7 @@
         <td>{{$auth->parent_id}}</td>
         <td>{{$auth->path}}</td>
         <td><a href = "/auth/edit/{{$auth->id}}">Edit Authorization Role</a></td>
-        <td><button>Edit Role</button></td>
+        <td><a href = "/authItems/edit/{{$auth->id}}">Edit Authorization Permission</a></td>
         <td><a href = "/auth/delete/{{$auth->id}}">Delete Role</a></td>
       </tr>
       @endforeach

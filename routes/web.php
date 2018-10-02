@@ -26,11 +26,14 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/auth/', 'authController@index')->name('index.authentications'); 
-//Saving New 
+//Saving New authentications
 Route::get('/auth/create', 'authController@create')->name('create.authentications'); 
 Route::post('/auth/create', 'authController@store')->name('store.authentications');
-//Updating Record
+//Updating authentications
 Route::get('/auth/edit/{authId}', 'authController@edit')->name('edit.authentications');  
 Route::post('/auth/edit/{authId}', 'authController@update')->name('update.authentications');
-//Delete Record
+//Updating authentication items
+Route::get('/authItems/edit/{authId}', 'authController@editItem')->name('edit.authenticationItems');  
+Route::post('/authItems/edit/{authId}', 'authController@updateItem')->name('update.authenticationItems');
+//Delete authentications
 Route::get('/auth/delete/{authId}', 'authController@delete')->name('delete.authentications'); 
