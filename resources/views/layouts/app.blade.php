@@ -7,6 +7,7 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
 	<link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 	<script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/solid.min.js')}}"></script>
@@ -15,7 +16,15 @@
 
 	<title>{{config('app.name', 'Merger')}}</title>
 
+	<style type="text/css">
+		body{
+			font-family: 'Raleway';
+			font-size: 13px;
+		}
+	</style>
+
 </head>
+
 <body>
 	<div class="wrapper">
 		
@@ -25,7 +34,7 @@
 
 			@include('inc.navbar')
 
-			@include('inc.title')
+			{{-- @include('inc.title') --}}
 
 			@yield('content')
 
@@ -33,8 +42,6 @@
 
 	</div>
 </body>
-
-
 
 <script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/popper.min.js')}}"></script>
