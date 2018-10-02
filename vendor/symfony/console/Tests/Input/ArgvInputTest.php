@@ -246,6 +246,14 @@ class ArgvInputTest extends TestCase
                 new InputDefinition(array(new InputArgument('number'))),
                 'The "-1" option does not exist.',
             ),
+<<<<<<< HEAD
+            array(
+                array('cli.php', '-fЩ'),
+                new InputDefinition(array(new InputOption('foo', 'f', InputOption::VALUE_NONE))),
+                'The "-Щ" option does not exist.',
+            ),
+=======
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
         );
     }
 

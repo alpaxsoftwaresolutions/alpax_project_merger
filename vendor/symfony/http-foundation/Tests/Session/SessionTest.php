@@ -70,6 +70,30 @@ class SessionTest extends TestCase
         $this->assertEquals('0123456789abcdef', $this->session->getId());
     }
 
+<<<<<<< HEAD
+    public function testSetIdAfterStart()
+    {
+        $this->session->start();
+        $id = $this->session->getId();
+
+        $e = null;
+        try {
+            $this->session->setId($id);
+        } catch (\Exception $e) {
+        }
+
+        $this->assertNull($e);
+
+        try {
+            $this->session->setId('different');
+        } catch (\Exception $e) {
+        }
+
+        $this->assertInstanceOf('\LogicException', $e);
+    }
+
+=======
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
     public function testSetName()
     {
         $this->assertEquals('MOCKSESSID', $this->session->getName());

@@ -742,7 +742,11 @@ TABLE;
         $table->render();
     }
 
+<<<<<<< HEAD
+    public function testColumnWidth()
+=======
     public function testColumnWith()
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
     {
         $table = new Table($output = $this->getOutputStream());
         $table
@@ -774,7 +778,11 @@ TABLE;
         $this->assertEquals($expected, $this->getOutputContent($output));
     }
 
+<<<<<<< HEAD
+    public function testColumnWidths()
+=======
     public function testColumnWiths()
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
     {
         $table = new Table($output = $this->getOutputStream());
         $table
@@ -824,6 +832,45 @@ TABLE;
         Table::getStyleDefinition('absent');
     }
 
+<<<<<<< HEAD
+    public function testBoxedStyleWithColspan()
+    {
+        $boxed = new TableStyle();
+        $boxed
+            ->setHorizontalBorderChar('─')
+            ->setVerticalBorderChar('│')
+            ->setCrossingChar('┼')
+        ;
+
+        $table = new Table($output = $this->getOutputStream());
+        $table->setStyle($boxed);
+        $table
+            ->setHeaders(array('ISBN', 'Title', 'Author'))
+            ->setRows(array(
+                array('99921-58-10-7', 'Divine Comedy', 'Dante Alighieri'),
+                new TableSeparator(),
+                array(new TableCell('This value spans 3 columns.', array('colspan' => 3))),
+            ))
+        ;
+        $table->render();
+
+        $expected =
+            <<<TABLE
+┼───────────────┼───────────────┼─────────────────┼
+│ ISBN          │ Title         │ Author          │
+┼───────────────┼───────────────┼─────────────────┼
+│ 99921-58-10-7 │ Divine Comedy │ Dante Alighieri │
+┼───────────────┼───────────────┼─────────────────┼
+│ This value spans 3 columns.                     │
+┼───────────────┼───────────────┼─────────────────┼
+
+TABLE;
+
+        $this->assertSame($expected, $this->getOutputContent($output));
+    }
+
+=======
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
     protected function getOutputStream($decorated = false)
     {
         return new StreamOutput($this->stream, StreamOutput::VERBOSITY_NORMAL, $decorated);

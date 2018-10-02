@@ -16,9 +16,15 @@ use Symfony\Component\Process\Exception\RuntimeException;
 /**
  * PhpProcess runs a PHP script in an independent process.
  *
+<<<<<<< HEAD
+ *     $p = new PhpProcess('<?php echo "foo"; ?>');
+ *     $p->run();
+ *     print $p->getOutput()."\n";
+=======
  * $p = new PhpProcess('<?php echo "foo"; ?>');
  * $p->run();
  * print $p->getOutput()."\n";
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */

@@ -74,6 +74,21 @@ class SymfonyQuestionHelperTest extends AbstractQuestionHelperTest
         $this->assertOutputContains('What is your favorite superhero? [Superman, Batman]', $output);
     }
 
+<<<<<<< HEAD
+    public function testAskChoiceWithChoiceValueAsDefault()
+    {
+        $questionHelper = new SymfonyQuestionHelper();
+        $helperSet = new HelperSet(array(new FormatterHelper()));
+        $questionHelper->setHelperSet($helperSet);
+        $question = new ChoiceQuestion('What is your favorite superhero?', array('Superman', 'Batman', 'Spiderman'), 'Batman');
+        $question->setMaxAttempts(1);
+
+        $this->assertSame('Batman', $questionHelper->ask($this->createStreamableInputInterfaceMock($this->getInputStream("Batman\n")), $output = $this->createOutputInterface(), $question));
+        $this->assertOutputContains('What is your favorite superhero? [Batman]', $output);
+    }
+
+=======
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
     public function testAskReturnsNullIfValidatorAllowsIt()
     {
         $questionHelper = new SymfonyQuestionHelper();
