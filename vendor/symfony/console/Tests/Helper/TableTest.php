@@ -742,11 +742,7 @@ TABLE;
         $table->render();
     }
 
-<<<<<<< HEAD
     public function testColumnWidth()
-=======
-    public function testColumnWith()
->>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
     {
         $table = new Table($output = $this->getOutputStream());
         $table
@@ -778,11 +774,7 @@ TABLE;
         $this->assertEquals($expected, $this->getOutputContent($output));
     }
 
-<<<<<<< HEAD
     public function testColumnWidths()
-=======
-    public function testColumnWiths()
->>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
     {
         $table = new Table($output = $this->getOutputStream());
         $table
@@ -832,7 +824,6 @@ TABLE;
         Table::getStyleDefinition('absent');
     }
 
-<<<<<<< HEAD
     public function testBoxedStyleWithColspan()
     {
         $boxed = new TableStyle();
@@ -869,8 +860,6 @@ TABLE;
         $this->assertSame($expected, $this->getOutputContent($output));
     }
 
-=======
->>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
     protected function getOutputStream($decorated = false)
     {
         return new StreamOutput($this->stream, StreamOutput::VERBOSITY_NORMAL, $decorated);

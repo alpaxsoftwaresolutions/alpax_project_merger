@@ -11,7 +11,6 @@ class FinalMethod
     {
     }
 
-<<<<<<< HEAD
     /**
      * @final
      */
@@ -19,8 +18,6 @@ class FinalMethod
     {
     }
 
-=======
->>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
     public function anotherMethod()
     {
     }

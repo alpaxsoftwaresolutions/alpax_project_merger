@@ -158,14 +158,7 @@ class HtmlExtension extends AbstractExtension
         $arguments = $function->getArguments();
         foreach ($arguments as $token) {
             if (!($token->isString() || $token->isIdentifier())) {
-<<<<<<< HEAD
                 throw new ExpressionErrorException('Expected a single string or identifier for :lang(), got '.implode(', ', $arguments));
-=======
-                throw new ExpressionErrorException(
-                    'Expected a single string or identifier for :lang(), got '
-                    .implode(', ', $arguments)
-                );
->>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
             }
         }
 

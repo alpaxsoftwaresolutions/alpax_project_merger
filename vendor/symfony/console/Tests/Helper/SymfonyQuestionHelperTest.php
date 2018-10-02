@@ -74,7 +74,6 @@ class SymfonyQuestionHelperTest extends AbstractQuestionHelperTest
         $this->assertOutputContains('What is your favorite superhero? [Superman, Batman]', $output);
     }
 
-<<<<<<< HEAD
     public function testAskChoiceWithChoiceValueAsDefault()
     {
         $questionHelper = new SymfonyQuestionHelper();
@@ -87,8 +86,6 @@ class SymfonyQuestionHelperTest extends AbstractQuestionHelperTest
         $this->assertOutputContains('What is your favorite superhero? [Batman]', $output);
     }
 
-=======
->>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
     public function testAskReturnsNullIfValidatorAllowsIt()
     {
         $questionHelper = new SymfonyQuestionHelper();

@@ -164,7 +164,6 @@ class Application
             }
 
             return $exitCode;
-
         } finally {
             // if the exception handler changed, keep it
             // otherwise, unregister $renderException

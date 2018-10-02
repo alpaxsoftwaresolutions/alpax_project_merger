@@ -1565,13 +1565,8 @@ class Process implements \IteratorAggregate
         $this->exitcode = null;
         $this->fallbackStatus = array();
         $this->processInformation = null;
-<<<<<<< HEAD
         $this->stdout = fopen('php://temp/maxmemory:'.(1024 * 1024), 'w+b');
         $this->stderr = fopen('php://temp/maxmemory:'.(1024 * 1024), 'w+b');
-=======
-        $this->stdout = fopen('php://temp/maxmemory:'.(1024 * 1024), 'wb+');
-        $this->stderr = fopen('php://temp/maxmemory:'.(1024 * 1024), 'wb+');
->>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
         $this->process = null;
         $this->latestSignal = null;
         $this->status = self::STATUS_READY;

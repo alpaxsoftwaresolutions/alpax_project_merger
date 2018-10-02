@@ -42,7 +42,6 @@ class TranslationDataCollectorTest extends TestCase
     {
         $collectedMessages = array(
             array(
-<<<<<<< HEAD
                 'id' => 'foo',
                 'translation' => 'foo (en)',
                 'locale' => 'en',
@@ -86,56 +85,10 @@ class TranslationDataCollectorTest extends TestCase
                 'state' => DataCollectorTranslator::MESSAGE_MISSING,
                 'parameters' => array('%count%' => 4, '%foo%' => 'bar'),
                 'transChoiceNumber' => 4,
-=======
-                  'id' => 'foo',
-                  'translation' => 'foo (en)',
-                  'locale' => 'en',
-                  'domain' => 'messages',
-                  'state' => DataCollectorTranslator::MESSAGE_DEFINED,
-                  'parameters' => array(),
-                  'transChoiceNumber' => null,
-            ),
-            array(
-                  'id' => 'bar',
-                  'translation' => 'bar (fr)',
-                  'locale' => 'fr',
-                  'domain' => 'messages',
-                  'state' => DataCollectorTranslator::MESSAGE_EQUALS_FALLBACK,
-                  'parameters' => array(),
-                  'transChoiceNumber' => null,
-            ),
-            array(
-                  'id' => 'choice',
-                  'translation' => 'choice',
-                  'locale' => 'en',
-                  'domain' => 'messages',
-                  'state' => DataCollectorTranslator::MESSAGE_MISSING,
-                  'parameters' => array('%count%' => 3),
-                  'transChoiceNumber' => 3,
-            ),
-            array(
-                  'id' => 'choice',
-                  'translation' => 'choice',
-                  'locale' => 'en',
-                  'domain' => 'messages',
-                  'state' => DataCollectorTranslator::MESSAGE_MISSING,
-                  'parameters' => array('%count%' => 3),
-                  'transChoiceNumber' => 3,
-            ),
-            array(
-                  'id' => 'choice',
-                  'translation' => 'choice',
-                  'locale' => 'en',
-                  'domain' => 'messages',
-                  'state' => DataCollectorTranslator::MESSAGE_MISSING,
-                  'parameters' => array('%count%' => 4, '%foo%' => 'bar'),
-                  'transChoiceNumber' => 4,
->>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
             ),
         );
         $expectedMessages = array(
             array(
-<<<<<<< HEAD
                 'id' => 'foo',
                 'translation' => 'foo (en)',
                 'locale' => 'en',
@@ -168,40 +121,6 @@ class TranslationDataCollectorTest extends TestCase
                     array('%count%' => 4, '%foo%' => 'bar'),
                 ),
                 'transChoiceNumber' => 3,
-=======
-                  'id' => 'foo',
-                  'translation' => 'foo (en)',
-                  'locale' => 'en',
-                  'domain' => 'messages',
-                  'state' => DataCollectorTranslator::MESSAGE_DEFINED,
-                  'count' => 1,
-                  'parameters' => array(),
-                  'transChoiceNumber' => null,
-            ),
-            array(
-                  'id' => 'bar',
-                  'translation' => 'bar (fr)',
-                  'locale' => 'fr',
-                  'domain' => 'messages',
-                  'state' => DataCollectorTranslator::MESSAGE_EQUALS_FALLBACK,
-                  'count' => 1,
-                  'parameters' => array(),
-                  'transChoiceNumber' => null,
-            ),
-            array(
-                  'id' => 'choice',
-                  'translation' => 'choice',
-                  'locale' => 'en',
-                  'domain' => 'messages',
-                  'state' => DataCollectorTranslator::MESSAGE_MISSING,
-                  'count' => 3,
-                  'parameters' => array(
-                      array('%count%' => 3),
-                      array('%count%' => 3),
-                      array('%count%' => 4, '%foo%' => 'bar'),
-                  ),
-                  'transChoiceNumber' => 3,
->>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
             ),
         );
 

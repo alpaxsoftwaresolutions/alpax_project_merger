@@ -47,3 +47,23 @@ Route::get('/role/edit/{roleId}', 'roleController@edit')->name('edit.role');
 Route::post('/role/edit/{roleId}', 'roleController@update')->name('update.role');
 //Delete role
 Route::get('/role/delete/{roleId}', 'roleController@delete')->name('delete.role'); 
+//View company
+Route::get('/company/', 'companyController@index')->name('index.company'); 
+//Saving company
+Route::get('/company/edit/{companyID}', 'companyController@edit')->name('edit.company');  
+Route::post('/company/edit/{companyID}', 'companyController@update')->name('update.company');
+//Delete company
+Route::get('/company/delete/{companyID}', 'companyController@delete')->name('delete.company'); 
+
+
+
+
+
+
+
+
+
+
+//Create Database Table
+Route::get('/table/create/', 'tableController@create')->name('create.table'); 
+Route::post('/table/create/', 'tableController@store')->name('store.table'); 

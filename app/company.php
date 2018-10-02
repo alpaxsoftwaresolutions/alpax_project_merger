@@ -2,11 +2,10 @@
 
 namespace App;
 
-use Laratrust\Models\LaratrustRole;
 use Illuminate\Database\Eloquent\Model;
 
-class role extends Model
+class company extends Model
 {
     protected $primaryKey = 'id';
-    protected $table = 'roles'; 
+    protected $table = 'company'; 
 }
