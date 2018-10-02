@@ -22,17 +22,8 @@ class authController extends Controller
 	 }
 	 public function create(){
 
-        $auths = DB::table('authentications')->selectRaw('id,name,parent_id as p_id,(SELECT name FROM authentications WHERE id = p_id) as parent_name')->orderBy('id','ASC')->get();
-        $values = [];
-        foreach($auths as $auth){
-        	if($auth->parent_name != null)
-        		$val = $auth->parent_name." > ".$auth->name;
-        	else
-        		$val = $auth->name;
-        	$values [] = ["id" => $auth->id,"name" => $val];
-        }
-        $authss = json_encode($values);
-	 	return view('pages.auth.form',compact('authss'));
+        $auths = Authentication::all();
+	 	return view('pages.auth.form',compact('auths'));
 	 }
 	 public function store(Request $request){
 	 	$authenticate = new Authentication;

@@ -1,6 +1,7 @@
 
  <form action="{{route('store.authentications')}}" method="post" role="form">
         {{csrf_field()}}
+
         <div class="form-group">
             <label for="auth_name"><i class="fa fa-id-badge" aria-hidden="true"></i>Name</label>
             <input type="text" class="form-control textboxes" name="auth_name" id="auth_name" value="{{ old('auth_name') }}">
@@ -15,8 +16,8 @@
         </div>
         <div class="form-group">
         	<select id = "auth_parent" name = "auth_parent" class="form-control textboxes">
-        			<option value = "0">Main Module</option>
-        		@foreach(json_decode($authss) as $auth)
+        			<option value = "0">No Parent</option>
+        		@foreach($auths as $auth)
         			<option value = "{{$auth->id}}">{{$auth->name}}</option>
         		@endforeach
         	</select>
