@@ -7,9 +7,6 @@
 	</div>
 
 	{!!html_entity_decode($sidebar)!!}
-<<<<<<< HEAD
-	
-=======
->>>>>>> f80ecd0afe2e74ce1d41074d4671447adecad149
+
 </nav>
 <!-- Sidebar -->
