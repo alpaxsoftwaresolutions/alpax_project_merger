@@ -10,10 +10,6 @@ package-lock.json
 package-lock.json
 .env
 .env
-<<<<<<< HEAD
-
-/vendor
-
-=======
 .env
->>>>>>> fcd2c88490b71f20dd3619bff986f5a8c5738a0e
+/vendor
+.gitignore

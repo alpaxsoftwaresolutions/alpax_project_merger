@@ -8,6 +8,6 @@ use App\Http\Controllers\Controller;
 class PagesController extends Controller
 {
     public function insert_module(){
-    	return view('pages.insert_module')->with('title','Insert Module');
+    	return view('settings.insert_module')->with('title','Insert Module');
     }
 }
