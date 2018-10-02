@@ -7,5 +7,6 @@
 	</div>
 
 	{!!html_entity_decode($sidebar)!!}
+
 </nav>
 <!-- Sidebar -->
