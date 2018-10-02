@@ -2,6 +2,7 @@
     <thead>
       <tr>
         <th>Name</th>
+        <th>Role</th>
         <th>Icon</th>
         <th>Parent ID</th>
         <th>Path</th>
@@ -12,6 +13,7 @@
       @foreach($auths as $auth)
       <tr>
         <td>{{$auth->name}}</td>
+        <td> {{$auth->name2}}</td>
         <td>{{$auth->icon}}</td>
         <td>{{$auth->parent_id}}</td>
         <td>{{$auth->path}}</td>
