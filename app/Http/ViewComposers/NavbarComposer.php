@@ -16,7 +16,7 @@ class NavbarComposer{
 		$view->with("sidebar",$this->sidebar);
 	}
 	public function count_dashboard($parent_id,$role_id){
-		$count = DB::select("SELECT count(*) as count FROM authentications as a LEFT JOIN authentication_items as ai ON ai.abs_id = a.id WHERE a.parent_id = ? and ai.role = ?",[$parent_id,$role_id]);
+		$count = DB::select("SELECT count(*) as count FROM authentications as a LEFT JOIN authentication_items as ai ON ai.auth_id = a.id WHERE a.parent_id = ? and ai.role = ?",[$parent_id,$role_id]);
 		foreach ($count as $c) {
 			if($c->count > 0){
 				return $this->get_dashboard($parent_id,$role_id);
@@ -27,13 +27,13 @@ class NavbarComposer{
 		}
 	}
 	public function count($parent_id,$role_id){
-		$count = DB::select("SELECT count(*) as count FROM authentications as a LEFT JOIN authentication_items as ai ON ai.abs_id = a.id WHERE a.parent_id = ? and ai.role = ?",[$parent_id,$role_id]);
+		$count = DB::select("SELECT count(*) as count FROM authentications as a LEFT JOIN authentication_items as ai ON ai.auth_id = a.id WHERE a.parent_id = ? and ai.role = ?",[$parent_id,$role_id]);
 		foreach ($count as $c) {
 			return $c->count;
 		}
 	}
 	public function get_dashboard($parent_id,$role_id){
-		$dashboard = DB::select("SELECT a.id,a.type,a.name, a.icon, a.parent_id, a.path, t.abs_id, t.role, t.isVisible, t.isReadable, t.isWritable FROM authentications as a LEFT JOIN authentication_items as t ON t.abs_id = a.id WHERE a.parent_id = ? and t.role = ?",[$parent_id,$role_id]);
+		$dashboard = DB::select("SELECT a.id,a.type,a.name, a.icon, a.parent_id, a.path, t.auth_id, t.role, t.isVisible, t.isReadable, t.isWritable FROM authentications as a LEFT JOIN authentication_items as t ON t.auth_id = a.id WHERE a.parent_id = ? and t.role = ?",[$parent_id,$role_id]);
 		$arr = [];
 		$this->sidebar .= $this->ulclass;
 		foreach ($dashboard as $dash) {
@@ -63,5 +63,16 @@ class NavbarComposer{
 
 		$this->sidebar.='</ul>';
 	}
+	 public function create(){
+
+	 	return view('pages.auth.form');
+	 }
+	 public function edit(){
+	 	
+	 }
+	 public function delete(){
+	 	
+	 }
+
 }
 ?>

@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
+<phpunit
+    bootstrap="./vendor/autoload.php">
+    <testsuites>
+        <testsuite>
+            <directory suffix="Test.php">tests</directory>
+=======
 <phpunit bootstrap="tests/bootstrap.php">
     <testsuites>
         <testsuite>
             <directory>tests/*</directory>
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
         </testsuite>
     </testsuites>
 
@@ -12,4 +20,8 @@
             <directory>vendor</directory>
         </blacklist>
     </filter>
+<<<<<<< HEAD
 </phpunit>
+=======
+</phpunit>
+>>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
