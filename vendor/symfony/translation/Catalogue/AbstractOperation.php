@@ -39,7 +39,6 @@ abstract class AbstractOperation implements OperationInterface
      * This array stores 'all', 'new' and 'obsolete' messages for all valid domains.
      *
      * The data structure of this array is as follows:
-<<<<<<< HEAD
      *
      *     array(
      *         'domain 1' => array(
@@ -54,23 +53,6 @@ abstract class AbstractOperation implements OperationInterface
      *         ),
      *         ...
      *     )
-=======
-     * ```php
-     * array(
-     *     'domain 1' => array(
-     *         'all' => array(...),
-     *         'new' => array(...),
-     *         'obsolete' => array(...)
-     *     ),
-     *     'domain 2' => array(
-     *         'all' => array(...),
-     *         'new' => array(...),
-     *         'obsolete' => array(...)
-     *     ),
-     *     ...
-     * )
-     * ```
->>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
      *
      * @var array The array that stores 'all', 'new' and 'obsolete' messages
      */

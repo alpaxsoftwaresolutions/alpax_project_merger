@@ -46,11 +46,7 @@ class RouteCollectionBuilder
     /**
      * Import an external routing resource and returns the RouteCollectionBuilder.
      *
-<<<<<<< HEAD
      *     $routes->import('blog.yml', '/blog');
-=======
-     *  $routes->import('blog.yml', '/blog');
->>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
      *
      * @param mixed       $resource
      * @param string|null $prefix

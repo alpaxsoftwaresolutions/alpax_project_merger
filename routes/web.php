@@ -29,36 +29,59 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-//View authentications
+
+
+//View authentications and AuthenticationItems
 Route::get('/auth/', 'authController@index')->name('index.authentications'); 
-//Saving New authentications
-Route::get('/auth/create', 'authController@create')->name('create.authentications'); 
+//Saving New authentications and AuthenticationItems
 Route::post('/auth/create', 'authController@store')->name('store.authentications');
-//Updating authentications
-Route::get('/auth/edit/{authId}', 'authController@edit')->name('edit.authentications');  
-Route::post('/auth/edit/{authId}', 'authController@update')->name('update.authentications');
-//Updating authentication items
-Route::get('/authItems/edit/{authId}', 'authController@editItem')->name('edit.authenticationItems');  
-Route::post('/authItems/edit/{authId}', 'authController@updateItem')->name('update.authenticationItems');
 //Delete authentications
 Route::get('/auth/delete/{authId}', 'authController@delete')->name('delete.authentications'); 
+
+
 //View Roles
 Route::get('/role/', 'roleController@index')->name('index.role'); 
 //Saving New role
 Route::get('/role/create', 'roleController@create')->name('create.role'); 
 Route::post('/role/create', 'roleController@store')->name('store.role');
-//Updating authentications
+//Updating role
 Route::get('/role/edit/{roleId}', 'roleController@edit')->name('edit.role');  
 Route::post('/role/edit/{roleId}', 'roleController@update')->name('update.role');
 //Delete role
 Route::get('/role/delete/{roleId}', 'roleController@delete')->name('delete.role'); 
+
+
+
+
 //View company
 Route::get('/company/', 'companyController@index')->name('index.company'); 
 //Saving company
+Route::get('/company/create/', 'companyController@create')->name('create.company');  
+Route::post('/company/create/', 'companyController@store')->name('store.company');
+//Editing company
 Route::get('/company/edit/{companyID}', 'companyController@edit')->name('edit.company');  
 Route::post('/company/edit/{companyID}', 'companyController@update')->name('update.company');
 //Delete company
 Route::get('/company/delete/{companyID}', 'companyController@delete')->name('delete.company'); 
+
+
+//View Branch
+Route::get('/branch/', 'branchController@index')->name('index.branch'); 
+//Save Branch
+Route::get('/branch/create', 'branchController@create')->name('create.branch'); 
+Route::post('/branch/create', 'branchController@store')->name('store.branch'); 
+//Editing Branch
+Route::get('/branch/edit/{branchID}', 'branchController@edit')->name('edit.branch'); 
+Route::post('/branch/edit/{branchID}', 'branchController@update')->name('update.branch'); 
+//Delete Branch
+Route::get('/branch/delete/{branchID}', 'branchController@delete')->name('delete.branch');
+
+
+//Create Database Table
+Route::get('/table/create/', 'tableController@create')->name('create.table'); 
+Route::post('/table/create/', 'tableController@store')->name('store.table'); 
+
+
 //Create Database Table
 Route::get('/table/create/', 'tableController@create')->name('create.table'); 
 Route::post('/table/create/', 'tableController@store')->name('store.table'); 

@@ -912,7 +912,6 @@ class ApplicationTest extends TestCase
         $this->assertSame(4, $exitCode, '->run() returns integer exit code extracted from raised exception');
     }
 
-<<<<<<< HEAD
     public function testRunDispatchesIntegerExitCode()
     {
         $passedRightValue = false;
@@ -938,8 +937,6 @@ class ApplicationTest extends TestCase
         $this->assertTrue($passedRightValue, '-> exit code 4 was passed in the console.terminate event');
     }
 
-=======
->>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
     public function testRunReturnsExitCodeOneForExceptionCodeZero()
     {
         $exception = new \Exception('', 0);
@@ -955,7 +952,6 @@ class ApplicationTest extends TestCase
         $this->assertSame(1, $exitCode, '->run() returns exit code 1 when exception code is 0');
     }
 
-<<<<<<< HEAD
     public function testRunDispatchesExitCodeOneForExceptionCodeZero()
     {
         $passedRightValue = false;
@@ -981,8 +977,6 @@ class ApplicationTest extends TestCase
         $this->assertTrue($passedRightValue, '-> exit code 1 was passed in the console.terminate event');
     }
 
-=======
->>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
     /**
      * @expectedException \LogicException
      * @expectedExceptionMessage An option with shortcut "e" already exists.

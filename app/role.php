@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Laratrust\Models\LaratrustRole;
 use Illuminate\Database\Eloquent\Model;
 
 class role extends Model

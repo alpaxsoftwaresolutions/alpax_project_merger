@@ -17,12 +17,8 @@ if (!function_exists('dump')) {
      */
     function dump($var)
     {
-
         foreach (func_get_args() as $v) {
             VarDumper::dump($v);
-
-        foreach (func_get_args() as $var) {
-            VarDumper::dump($var);
         }
 
         if (1 < func_num_args()) {
@@ -31,5 +27,4 @@ if (!function_exists('dump')) {
 
         return $var;
     }
-}
 }

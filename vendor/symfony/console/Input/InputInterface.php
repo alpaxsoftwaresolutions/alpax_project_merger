@@ -61,11 +61,8 @@ interface InputInterface
 
     /**
      * Binds the current Input instance with the given arguments and options.
-<<<<<<< HEAD
      *
      * @throws RuntimeException
-=======
->>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
      */
     public function bind(InputDefinition $definition);
 
@@ -88,11 +85,7 @@ interface InputInterface
      *
      * @param string $name The argument name
      *
-<<<<<<< HEAD
      * @return string|string[] The argument value
-=======
-     * @return mixed The argument value
->>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
      *
      * @throws InvalidArgumentException When argument given doesn't exist
      */
@@ -101,13 +94,8 @@ interface InputInterface
     /**
      * Sets an argument value by name.
      *
-<<<<<<< HEAD
      * @param string          $name  The argument name
      * @param string|string[] $value The argument value
-=======
-     * @param string $name  The argument name
-     * @param string $value The argument value
->>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
      *
      * @throws InvalidArgumentException When argument given doesn't exist
      */
@@ -134,11 +122,7 @@ interface InputInterface
      *
      * @param string $name The option name
      *
-<<<<<<< HEAD
      * @return string|string[]|bool The option value
-=======
-     * @return mixed The option value
->>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
      *
      * @throws InvalidArgumentException When option given doesn't exist
      */
@@ -147,13 +131,8 @@ interface InputInterface
     /**
      * Sets an option value by name.
      *
-<<<<<<< HEAD
      * @param string               $name  The option name
      * @param string|string[]|bool $value The option value
-=======
-     * @param string      $name  The option name
-     * @param string|bool $value The option value
->>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
      *
      * @throws InvalidArgumentException When option given doesn't exist
      */

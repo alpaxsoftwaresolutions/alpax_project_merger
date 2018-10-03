@@ -16,74 +16,59 @@ class authController extends Controller
 		$auths = DB::table('authentication_items')
 	 		->join('authentications' , 'auth_id', '=','authentications.id')
 	 		->join('roles' , 'authentication_items.role', '=','roles.id')
-	 		->select('authentications.path','authentications.parent_id','authentications.icon','authentications.name','roles.name as name2','authentications.id')
+	 		->select('authentications.path','authentications.parent_id','authentications.icon','authentications.name','authentications.order_id','roles.name as name2','authentications.id','authentication_items.auth_id','authentication_items.role','authentication_items.isVisible','authentication_items.isReadable','authentication_items.isWritable')
+	 		->where('authentications.deleted_at',NULL)
 	 		->get();
-		return view('settings.developer_tools.manage_module',compact('auths'));
-	 }
-	 public function create(){
-        $auths = Authentication::all();
-	 	return view('pages.auth.form',compact('auths'));
-	 }
-	 public function store(Request $request){
-	 	$authenticate = new Authentication;
-
-	 	$authenticate->name=$request['auth_name'];
-	 	$authenticate->order_id=$request['auth_order'];
-	 	$authenticate->icon=$request['auth_icon'];
-	 	$authenticate->parent_id=$request['auth_parent'];
-	 	$authenticate->path=$request['auth_path'];
-	 	$authenticate->save();
-	 	$authsID = Authentication::orderby('id','DESC')->pluck('id')->first();
-	 	$auth_items =  new AuthenticationItems;
-	 	$auth_items->auth_id = $authsID;
-	 	$auth_items->save();
-	 	 $auths = Authentication::where('deleted_at', '=', NULL )->get();
 		return view('pages.auth.index',compact('auths'));
 	 }
-	 public function edit($authId){
-	 	$auths_edit = Authentication::where('id', $authId)->get();
-	 	$auths = Authentication::all();
-	 	return view('pages.auth.edit',compact('auths','auths_edit'));
+	 public function store(Request $request){
+	 	if (request()->has('auth_id')){
+	 		$authId = $request['auth_id'];
+	 		 $update_auths = Authentication::where('id', $authId)->update([
+	         'name'  => $request['auth_name_edit'],
+	         'order_id' =>  $request['auth_order_edit'],
+	         'icon' => $request['auth_icon_edit'],
+	         'parent_id' =>  $request['auth_parent_edit'],
+	         'path' =>  $request['auth_path_edit']
+	       ]);
+	 		return back()->with('success','Module Editted');
+	 	}
+	 	else if (request()->has('role_id')){
+	 		$authId = $request['role_id'];
+			if (isset($request['visible'])){$visible = 1;}else{$visible = 0;}
+	 		if (isset($request['readable'])){$readable = 1;}else{$readable = 0;}
+	 		if (isset($request['writable'])){$writable = 1;}else{$writable = 0;}
+	 		$update_authitems = AuthenticationItems::where('auth_id', $authId)->update([
+	           'isVisible' =>  $visible ,
+	           'isReadable' => $readable,
+	           'isWritable' => $writable
+	        ]);
+	        return back()->with('success','Permission Editted');
+	 	}
+	 	else{
+		 	$authenticate = new Authentication;
+
+		 	$authenticate->name=$request['auth_name'];
+		 	$authenticate->order_id=$request['auth_order'];
+		 	$authenticate->icon=$request['auth_icon'];
+		 	$authenticate->parent_id=$request['auth_parent'];
+		 	$authenticate->path=$request['auth_path'];
+		 	$authenticate->save();
+		 	$authsID = Authentication::orderby('id','DESC')->pluck('id')->first();
+		 	$auth_items =  new AuthenticationItems;
+		 	$auth_items->auth_id = $authsID;
+		 	$auth_items->save();
+		 	return back()->with('success','New Module Created');
+	 	}
+	 	
+		
 	 }
 	 public function delete($authId){
 	 	 $delete_auths = Authentication::where('id', $authId)->update([
            'deleted_at' =>  Carbon::now()
         ]);
 	 	$auths = Authentication::where('deleted_at', '=', NULL )->get();
-		return view('pages.auth.index',compact('auths'));
+		return back()->with('success','Deleted Successfully');
 	 }
-	  public function update(Request $request, $authId){
-	 	 $update_auths = Authentication::where('id', $authId)->update([
-         'name'  => $request['auth_name_edit'],
-         'order_id' =>  $request['auth_order_edit'],
-         'icon' => $request['auth_icon_edit'],
-         'parent_id' =>  $request['auth_parent_edit'],
-         'path' =>  $request['auth_path_edit']
-       ]);
-	 	 $auths = Authentication::where('deleted_at', '=', NULL )->get();
-		return view('pages.auth.index',compact('auths'));
-	}
-	 public function editItem(Request $request, $authId){
- 		$authItems = DB::table('authentication_items')
- 		->join('authentications' , 'auth_id', '=','authentications.id')
- 		->select('isVisible','isReadable','isWritable','authentications.name')
- 		->where('authentication_items.auth_id','=', $authId)
- 		->get();
- 		
-	 	return view('pages.authItems.edit',compact('authItems'));
-	 }
-	public function updateItem(Request $request, $authId){
-
-		if (isset($request['visible'])){$visible = 1;}else{$visible = 0;}
- 		if (isset($request['readable'])){$readable = 1;}else{$readable = 0;}
- 		if (isset($request['writable'])){$writable = 1;}else{$writable = 0;}
- 		$update_authitems = AuthenticationItems::where('auth_id', $authId)->update([
-           'isVisible' =>  $visible ,
-           'isReadable' => $readable,
-           'isWritable' => $writable
-           ]);
- 		$auths = Authentication::where('deleted_at', '=', NULL )->get();
-		return view('pages.auth.index',compact('auths'));
-	}
 }
 ?>

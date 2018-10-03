@@ -209,13 +209,9 @@ class Session implements SessionInterface, \IteratorAggregate, \Countable
      */
     public function setId($id)
     {
-<<<<<<< HEAD
         if ($this->storage->getId() !== $id) {
             $this->storage->setId($id);
         }
-=======
-        $this->storage->setId($id);
->>>>>>> 5df037cc04d5db9f621306f5c9c55a743886da7b
     }
 
     /**
