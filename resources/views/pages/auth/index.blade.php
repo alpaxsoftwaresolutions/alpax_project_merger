@@ -22,7 +22,7 @@
         <tr>
           <th>Name</th>
           <th>Role</th>
-          <th>Icon</th>
+          <th>Icon</th>  
           <th>Parent ID</th>
           <th>Path</th>
           <th>Order</th>
@@ -39,8 +39,22 @@
           <td>{{$auth->path}}</td>
           <td>{{$auth->order_id}}</td>
           <td>
-            <button class="btn btn-sm btn-primary open-edit" {{-- href = "/auth/edit/{{$auth->id}}" --}} title="Edit Authorization Role" data-toggle="modal" data-target="#m_edit_module" data-id = "{{$auth->id}}"  data-name = "{{$auth->name}}" data-oder = "{{$auth->order_id}}" data-icon = "{{$auth->icon}}" data-path = "{{$auth->path}}"><i class="fa fa-users-cog"></i></button>
-            <a class="btn btn-sm btn-primary" href = "/authItems/edit/{{$auth->id}}" title="Edit Authorization Permission"><i class="fa fa-user-lock"></i></a>
+            <button class="btn btn-sm btn-primary open-edit"  title="Edit Authorization Role" 
+            data-toggle="modal" 
+            data-target="#m_edit_module" 
+            data-id = "{{$auth->id}}"  
+            data-name = "{{$auth->name}}" 
+            data-oder = "{{$auth->order_id}}" 
+            data-icon = "{{$auth->icon}}" 
+            data-path = "{{$auth->path}}"><i class="fa fa-users-cog"></i></button>
+           <button class="btn btn-sm btn-primary open-edit-role"  title="Edit Authorization Role" 
+           data-toggle="modal" 
+           data-target="#m_edit_permission" 
+           data-id = "{{$auth->auth_id}}"  
+           data-role = "{{$auth->role}}" 
+           data-visible = "{{$auth->isVisible}}" 
+           data-readable = "{{$auth->isReadable}}" 
+           data-writable = "{{$auth->isWritable}}"><i class="fa fa-user-lock"></i></button>
             <a class="btn btn-sm btn-danger" href = "/auth/delete/{{$auth->id}}" title="Delete Module"><i class="fa fa-minus"></i></a>
           </td>
         </tr>
@@ -178,6 +192,58 @@
 </div>
 <!-- Edit Authorization Modal -->
 
+<!-- Edit Permission Modal -->
+<div class="modal fade" id="m_edit_permission"role="dialog" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-fluid" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Authorization</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="row">
+
+          <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+            <form  action="{{route('store.authentications')}}" method="POST" role="form">
+              {{csrf_field()}}
+            <div class="form-group">
+                <label for="role_id">ID</label>
+                <input type="text" class="form-control textboxes" name="role_id" id="role_id" >
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="visible" name="visible" value="1">
+                <label class="form-check-label" for="visible">Visible</label>
+              </div>
+
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="readable" name="readable" value="1">
+                <label class="form-check-label" for="readable">Readable</label>
+              </div>
+
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="writable" name="writable" value="1">
+                <label class="form-check-label" for="writable">Writable</label>
+              </div>
+
+
+          </div>
+
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-primary">Save</button>
+        </form>
+        <button class="btn btn-secondary">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Edit Permission Modal -->
 
 <script type="text/javascript">
   $("#auth_table").DataTable();
@@ -198,6 +264,33 @@ $(document).on("click", ".open-edit", function () {
      // As pointed out in comments, 
      // it is superfluous to have to manually call the modal.
      // $('#addBookDialog').modal('show');
+});
+$(document).on("click", ".open-edit-role", function () {
+
+     var myroleId = $(this).data('id');
+     var myroleOrder = $(this).data('role');
+     var myVisible = $(this).data('visible');
+     var myReadable = $(this).data('readable');
+     var myWritable = $(this).data('writable');
+     $(".modal-body #role_id").val( myroleId );
+    if (myVisible == 1){
+      $(".modal-body #visible").attr("checked", "true");
+     }
+    else{
+      $(".modal-body #visible").removeAttr("checked", "false");
+     }
+    if (myReadable == 1){
+      $(".modal-body #readable").attr("checked", "true");
+     }
+    else{
+      $(".modal-body #readable").removeAttr("checked", "false");
+    }
+    if (myWritable == 1){
+      $(".modal-body #writable").attr("checked", "true");
+     }
+    else{
+      $(".modal-body #writable").removeAttr("checked", "false"); 
+     }
 });
 </script>
 @endsection

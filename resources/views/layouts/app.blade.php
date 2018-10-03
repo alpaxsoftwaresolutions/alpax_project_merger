@@ -31,7 +31,7 @@
 		@include('inc.sidebar')
 
 		<div id="content">
-		
+			@include('pages.flash-message')
 			@include('inc.navbar')
 
 			{{-- @include('inc.title') --}}
