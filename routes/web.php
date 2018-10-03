@@ -62,12 +62,9 @@ Route::get('/company/delete/{companyID}', 'companyController@delete')->name('del
 
 //View Branch
 Route::get('/branch/', 'branchController@index')->name('index.branch'); 
-//Save Branch
-Route::get('/branch/create', 'branchController@create')->name('create.branch'); 
+//Save and Edit Branch
 Route::post('/branch/create', 'branchController@store')->name('store.branch'); 
-//Editing Branch
-Route::get('/branch/edit/{branchID}', 'branchController@edit')->name('edit.branch'); 
-Route::post('/branch/edit/{branchID}', 'branchController@update')->name('update.branch'); 
+
 //Delete Branch
 Route::get('/branch/delete/{branchID}', 'branchController@delete')->name('delete.branch');
 

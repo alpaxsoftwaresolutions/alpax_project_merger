@@ -18,8 +18,6 @@ class companyController extends Controller
 		$company = new company;
 
 	 	$company->name=$request['company_name'];
-	 	$company->branch_code=$request['company_branch_code'];
-	 	$company->branch_name=$request['company_branch_name'];
 	 	$company->Unit=$request['company_unit'];
 	 	$company->Bldg=$request['company_bldg'];
 	 	$company->Street=$request['company_street'];
@@ -49,8 +47,6 @@ class companyController extends Controller
     {
     	$edit_company = company::where('id', $companyID)->update([
         'name'=>$request['company_name'],
-	 	'branch_code'=>$request['company_branch_code'],
-	 	'branch_name'=>$request['company_branch_name'],
 	 	'Unit'=>$request['company_unit'],
 	 	'Bldg'=>$request['company_bldg'],
 	 	'Street'=>$request['company_street'],

@@ -21,7 +21,7 @@ class RoleController extends Controller
     }
     public function store(Request $request)
     {
-    	$user = $request->user();
+    	$user = $request->user();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
     	$role = new role;
 
 	 	$role->name = $request['role_name'];
