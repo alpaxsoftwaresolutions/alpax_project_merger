@@ -19,16 +19,6 @@
 						<label>Company Name</label>
 						<input type="text" class="form-control" name="company_name">
 					</div>
-
-					<div class="form-group">
-						<label>Branch Code</label>
-						<input type="text" class="form-control" name="branch_code">
-					</div>	
-
-					<div class="form-group">
-						<label>Branch Name</label>
-						<input type="text" class="form-control" name="branch_name">
-					</div>	
 				</div>
 
 				<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 mt-2 mb-2">

@@ -19,7 +19,7 @@ class authController extends Controller
 	 		->select('authentications.path','authentications.parent_id','authentications.icon','authentications.name','authentications.order_id','roles.name as name2','authentications.id','authentication_items.auth_id','authentication_items.role','authentication_items.isVisible','authentication_items.isReadable','authentication_items.isWritable')
 	 		->where('authentications.deleted_at',NULL)
 	 		->get();
-		return view('pages.auth.index',compact('auths'));
+		return view('settings.developer_tools.manage_module',compact('auths'));
 	 }
 	 public function store(Request $request){
 	 	if (request()->has('auth_id')){
