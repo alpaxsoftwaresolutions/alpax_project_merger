@@ -13,48 +13,36 @@ class RoleController extends Controller
     public function index()
     {
         $roles = role::where('deleted_at', '=', NULL )->get();
-		return view('pages.role.view',compact('roles'));
+		    return view('settings.user_management.roles',compact('roles'));
     }
-    public function create()
-    {
-    	return view('pages.role.form');
-    }
+
     public function store(Request $request)
-    {
-    	$user = $request->user();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
-    	$role = new role;
-
-	 	$role->name = $request['role_name'];
-	 	$role->created_at = Carbon::now();
-	 	$role->updated_at = Carbon::now();
-	 	$role->updated_by= $user;
-	 	$role->version="1";
-	 	$role->save();
-	 	$roles = role::where('deleted_at', '=', NULL )->get();
-		return view('pages.role.view',compact('roles'));
-    }
-     public function edit($roleId)
-    {
-    	$role =  role::where('id', '=', $roleId )->get();
-    	return view('pages.role.edit',compact('role'));
-    }
-    public function update(Request $request,$roleId)
-    {
-
-    	$roleversion =  role::where('id', '=', $roleId )->pluck('version')->first();
-    	$update_role = role::where('id', $roleId)->update([
-          	'name' => $request['role_name_edit'],
-		 	'updated_at' => Carbon::now(),
-		 	'version'=> ($roleversion + 1)
+    {   
+      if (request()->has('role_id_edit')){
+        $roleId = $request['role_id_edit'];
+        $roleversion =  role::where('id', '=', $roleId )->pluck('version')->first();
+        $update_role = role::where('id', $roleId)->update([
+          'name' => $request['role_name_edit'],
+          'updated_at' => Carbon::now(),
+          'version'=> ($roleversion + 1)
         ]);
-	 	$roles = role::where('deleted_at', '=', NULL )->get();
-		return view('pages.role.view',compact('roles'));
+        return back()->with('success','Role Editted'); 
+      }else{
+        $role = new role;
+        $role->name = $request['role_name'];
+        $role->created_at = Carbon::now();
+        $role->updated_at = Carbon::now();
+        $role->version="1";
+        $role->save();
+        return back()->with('success','New Role Added'); 
+      }                                                                                                                                   
+
     }
-     public function delete($roleId){
+    public function delete($roleId){
      	$delete_role = role::where('id', $roleId)->update([
           	'deleted_at'=> Carbon::now()
         ]);
      	$roles = role::where('deleted_at', '=', NULL )->get();
-		return view('pages.role.view',compact('roles'));
-     }
+		   return back()->with('success','Role Deleted Successfully'); 
+   }
 }

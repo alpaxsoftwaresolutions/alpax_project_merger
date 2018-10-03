@@ -12,7 +12,8 @@ class companyController extends Controller
     	return view('settings.company_profile',compact('company'));
 	}
 	public function store(Request $request){
-		if(request()->has('company_id')){
+		if(request()->has('company_id_edit')){
+			$companyID = $request['company_id_edit'];
 			$edit_company = company::where('id', $companyID)->update([
 	        'name'=>$request['company_name'],
 		 	'Unit'=>$request['company_unit'],
@@ -32,7 +33,7 @@ class companyController extends Controller
 		 	'Pagibig'=>$request['company_pagibig'],
 		 	'Philhealth'=>$request['company_philhealth']
 	        ]);
-			return back()->with('success','Module Editted');
+			return back()->with('success','Company Editted');
 		}else{
 			$company = new company;
 		 	$company->name=$request['company_name'];
@@ -53,14 +54,15 @@ class companyController extends Controller
 		 	$company->Pagibig=$request['company_pagibig'];
 		 	$company->Philhealth=$request['company_philhealth'];
 		 	$company->save();
-	    	return back()->with('success','Module Editted');
+	    	return back()->with('success','New Company Added');
 		}
 		
 	}
-     public function delete(){
-		$delete_company = company::where('id', $companyID)->update([
-           'deleted_at' =>  Carbon::now()
-        ]);
-		return back()->with('success','Module Editted');
+     public function delete(Request $request){
+		 $cmpId = $request['company_id_delete'];
+	 		 $delete_auths = company::where('id', $cmpId)->update([
+	         'deleted_at'  => Carbon::now()
+	       ]);
+    	 return back()->with('success','Company Deleted');
      }
 }

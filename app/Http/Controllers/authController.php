@@ -16,9 +16,10 @@ class authController extends Controller
 		$auths = DB::table('authentication_items')
 	 		->join('authentications' , 'auth_id', '=','authentications.id')
 	 		->join('roles' , 'authentication_items.role', '=','roles.id')
-	 		->select('authentications.path','authentications.parent_id','authentications.icon','authentications.name','authentications.order_id','roles.name as name2','authentications.id','authentication_items.auth_id','authentication_items.role','authentication_items.isVisible','authentication_items.isReadable','authentication_items.isWritable')
-	 		->where('authentications.deleted_at',NULL)
+	 		->select('authentications.path','authentications.parent_id','authentications.icon','authentications.name','authentications.order_id','roles.name as name2','authentications.id','authentication_items.auth_id','authentication_items.role','authentication_items.isVisible','authentication_items.isReadable','authentication_items.isWritable','authentications.parent_id as p_id',DB::raw('(SELECT name FROM authentications WHERE id = p_id) as parent_name'))
+	 		->where('authentications.deleted_at',NULL)->orderBy('id','ASC')
 	 		->get();
+
 		return view('settings.developer_tools.manage_module',compact('auths'));
 	 }
 	 public function store(Request $request){

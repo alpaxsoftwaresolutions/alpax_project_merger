@@ -84,6 +84,12 @@
 		});
 
 	});
+	var curloc = location.pathname;
+	if(curloc !='/'){
+		$('a[href^="'+curloc+'"').closest('li').addClass('active');
+		$('a[href^="'+curloc+'"').closest('ul').addClass('show');
+		$('a[href^="'+curloc+'"').closest('ul').prev().attr('aria-expanded','true');
+	}
 </script>
 
 </html>

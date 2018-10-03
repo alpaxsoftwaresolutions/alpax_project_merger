@@ -41,12 +41,8 @@ Route::get('/auth/delete/{authId}', 'authController@delete')->name('delete.authe
 
 //View Roles
 Route::get('/role/', 'roleController@index')->name('index.role'); 
-//Saving New role
-Route::get('/role/create', 'roleController@create')->name('create.role'); 
+//Saving And Editting New role 
 Route::post('/role/create', 'roleController@store')->name('store.role');
-//Updating role
-Route::get('/role/edit/{roleId}', 'roleController@edit')->name('edit.role');  
-Route::post('/role/edit/{roleId}', 'roleController@update')->name('update.role');
 //Delete role
 Route::get('/role/delete/{roleId}', 'roleController@delete')->name('delete.role'); 
 
@@ -55,38 +51,34 @@ Route::get('/role/delete/{roleId}', 'roleController@delete')->name('delete.role'
 
 //View company
 Route::get('/company/', 'companyController@index')->name('index.company'); 
-//Saving company
-Route::get('/company/create/', 'companyController@create')->name('create.company');  
+//Saving and Editting company 
 Route::post('/company/create/', 'companyController@store')->name('store.company');
-//Editing company
-Route::get('/company/edit/{companyID}', 'companyController@edit')->name('edit.company');  
-Route::post('/company/edit/{companyID}', 'companyController@update')->name('update.company');
 //Delete company
-Route::get('/company/delete/{companyID}', 'companyController@delete')->name('delete.company'); 
+Route::post('/company/delete', 'companyController@delete')->name('delete.company'); 
+
+
 
 
 //View Branch
 Route::get('/branch/', 'branchController@index')->name('index.branch'); 
 //Save and Edit Branch
 Route::post('/branch/create', 'branchController@store')->name('store.branch'); 
-
 //Delete Branch
 Route::get('/branch/delete/{branchID}', 'branchController@delete')->name('delete.branch');
 
 
-//Create Database Table
-Route::get('/table/create/', 'tableController@create')->name('create.table'); 
-Route::post('/table/create/', 'tableController@store')->name('store.table'); 
 
 
-//Create Database Table
-Route::get('/table/create/', 'tableController@create')->name('create.table'); 
-Route::post('/table/create/', 'tableController@store')->name('store.table'); 
+//View Departments
+Route::get('/department', 'departmentController@index')->name('index.department');
+//Save and Edit Departments
+Route::post('/department/create', 'departmentController@store')->name('store.department'); 
+//Delete Branch
+Route::post('/department/delete', 'departmentController@delete')->name('delete.department');
 
-//Departments
-Route::get('/settings/ezpp/hris/departments', function(){
-	return view('settings.ezpp.hris.departments');
-});
+
+
+
 
 //Employment Status
 Route::get('/settings/ezpp/hris/employment_status', function(){
@@ -107,3 +99,22 @@ Route::get('settings/ezpp/hris/document_number_setup', function(){
 Route::get('settings/ezpp/hris/profit_center', function(){
 	return view('settings.ezpp.hris.profit_center');
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Create Database Table
+Route::get('/table/create/', 'tableController@create')->name('create.table'); 
+Route::post('/table/create/', 'tableController@store')->name('store.table'); 
