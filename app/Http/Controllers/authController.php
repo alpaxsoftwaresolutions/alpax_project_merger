@@ -16,7 +16,8 @@ class authController extends Controller
 		$auths = DB::table('authentication_items')
 	 		->join('authentications' , 'auth_id', '=','authentications.id')
 	 		->join('roles' , 'authentication_items.role', '=','roles.id')
-	 		->select('authentications.path','authentications.parent_id','authentications.icon','authentications.name','roles.name as name2','authentications.id')
+	 		->select('authentications.path','authentications.parent_id','authentications.icon','authentications.name','authentications.order_id','roles.name as name2','authentications.id')
+	 		->where('authentications.deleted_at',NULL)
 	 		->get();
 		return view('pages.auth.index',compact('auths'));
 	 }
@@ -26,20 +27,32 @@ class authController extends Controller
 	 	return view('pages.auth.form',compact('auths'));
 	 }
 	 public function store(Request $request){
-	 	$authenticate = new Authentication;
+	 	if (request()->has('auth_id')){
+	 		$authId = $request['auth_id'];
+	 		 $update_auths = Authentication::where('id', $authId)->update([
+	         'name'  => $request['auth_name_edit'],
+	         'order_id' =>  $request['auth_order_edit'],
+	         'icon' => $request['auth_icon_edit'],
+	         'parent_id' =>  $request['auth_parent_edit'],
+	         'path' =>  $request['auth_path_edit']
+	       ]);	
+	 	}
+	 	else{
+		 	$authenticate = new Authentication;
 
-	 	$authenticate->name=$request['auth_name'];
-	 	$authenticate->order_id=$request['auth_order'];
-	 	$authenticate->icon=$request['auth_icon'];
-	 	$authenticate->parent_id=$request['auth_parent'];
-	 	$authenticate->path=$request['auth_path'];
-	 	$authenticate->save();
-	 	$authsID = Authentication::orderby('id','DESC')->pluck('id')->first();
-	 	$auth_items =  new AuthenticationItems;
-	 	$auth_items->auth_id = $authsID;
-	 	$auth_items->save();
-	 	 $auths = Authentication::where('deleted_at', '=', NULL )->get();
-		return view('pages.auth.index',compact('auths'));
+		 	$authenticate->name=$request['auth_name'];
+		 	$authenticate->order_id=$request['auth_order'];
+		 	$authenticate->icon=$request['auth_icon'];
+		 	$authenticate->parent_id=$request['auth_parent'];
+		 	$authenticate->path=$request['auth_path'];
+		 	$authenticate->save();
+		 	$authsID = Authentication::orderby('id','DESC')->pluck('id')->first();
+		 	$auth_items =  new AuthenticationItems;
+		 	$auth_items->auth_id = $authsID;
+		 	$auth_items->save();
+	 	}
+	 	
+		return back();
 	 }
 	 public function edit($authId){
 	 	$auths_edit = Authentication::where('id', $authId)->get();
@@ -51,7 +64,7 @@ class authController extends Controller
            'deleted_at' =>  Carbon::now()
         ]);
 	 	$auths = Authentication::where('deleted_at', '=', NULL )->get();
-		return view('pages.auth.index',compact('auths'));
+		return back();
 	 }
 	  public function update(Request $request, $authId){
 	 	 $update_auths = Authentication::where('id', $authId)->update([
