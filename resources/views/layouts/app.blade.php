@@ -8,11 +8,13 @@
 
 	<link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/r-2.2.2/datatables.min.css"/>
 
 	<script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/solid.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/animate.min.js')}}"></script>
-	<script type="text/javascript" src="{{asset('js/jquery.dataTables.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('js/select2.min.js')}}"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/r-2.2.2/datatables.min.js"></script>
 
 	<title>{{config('app.name', 'Merger')}}</title>
 
@@ -20,6 +22,24 @@
 		body{
 			font-family: 'Raleway';
 			font-size: 13px;
+		}
+
+		h1, h2, h3, h4, h5, h6{
+			font-family: 'Poppins'
+		}
+
+		input {
+			border: 1px solid transparent;
+			background-color: #f1f1f1;
+			padding: 10px;
+			font-size: 13px;
+		}
+		input[type=text] {
+			width: 100%;
+		}
+		input[type=submit] {
+			background-color: DodgerBlue;
+			color: #fff;
 		}
 	</style>
 
@@ -33,8 +53,6 @@
 		<div id="content">
 
 			@include('inc.navbar')
-
-			{{-- @include('inc.title') --}}
 
 			@yield('content')
 

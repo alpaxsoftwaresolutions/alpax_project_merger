@@ -18,10 +18,9 @@ class authController extends Controller
 	 		->join('roles' , 'authentication_items.role', '=','roles.id')
 	 		->select('authentications.path','authentications.parent_id','authentications.icon','authentications.name','roles.name as name2','authentications.id')
 	 		->get();
-		return view('pages.auth.index',compact('auths'));
+		return view('settings.developer_tools.manage_module',compact('auths'));
 	 }
 	 public function create(){
-
         $auths = Authentication::all();
 	 	return view('pages.auth.form',compact('auths'));
 	 }
@@ -70,8 +69,7 @@ class authController extends Controller
  		->select('isVisible','isReadable','isWritable','authentications.name')
  		->where('authentication_items.auth_id','=', $authId)
  		->get();
-
-
+ 		
 	 	return view('pages.authItems.edit',compact('authItems'));
 	 }
 	public function updateItem(Request $request, $authId){
