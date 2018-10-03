@@ -1,18 +1,23 @@
 <?php
-
-
-// |--------------------------------------------------------------------------
-// | Web Routes
-// |--------------------------------------------------------------------------
-// |
-// | Here is where you can register web routes for your application. These
-// | routes are loaded by the RouteServiceProvider within a group which
-// | contains the "web" middleware group. Now create something great!
-// |
-
+/*
+/
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+/
+*/
 
 Route::get('/', function () {
 	return view('pages.home');
+});
+
+Route::get('/settings/general_settings', function () {
+	return view('settings.general_settings');
 });
 
 Route::get('/insert-module','PagesController@insert_module');
@@ -69,12 +74,6 @@ Route::post('/branch/create', 'branchController@store')->name('store.branch');
 Route::get('/branch/delete/{branchID}', 'branchController@delete')->name('delete.branch');
 
 
-
-
-
-
-
-
 //Create Database Table
 Route::get('/table/create/', 'tableController@create')->name('create.table'); 
 Route::post('/table/create/', 'tableController@store')->name('store.table'); 
@@ -84,3 +83,27 @@ Route::post('/table/create/', 'tableController@store')->name('store.table');
 Route::get('/table/create/', 'tableController@create')->name('create.table'); 
 Route::post('/table/create/', 'tableController@store')->name('store.table'); 
 
+//Departments
+Route::get('/settings/ezpp/hris/departments', function(){
+	return view('settings.ezpp.hris.departments');
+});
+
+//Employment Status
+Route::get('/settings/ezpp/hris/employment_status', function(){
+	return view('settings.ezpp.hris.employment_status');
+});
+
+//Violation
+Route::get('/settings/ezpp/hris/violations', function(){
+	return view('settings.ezpp.hris.violations');
+});
+
+//Document Number Setup
+Route::get('settings/ezpp/hris/document_number_setup', function(){
+	return view('settings.ezpp.hris.document_number_setup');
+});
+
+//Profit Center
+Route::get('settings/ezpp/hris/profit_center', function(){
+	return view('settings.ezpp.hris.profit_center');
+});

@@ -2220,9 +2220,9 @@ pre code {
 .form-control {
   display: block;
   width: 100%;
-  height: calc(2rem + 2px);
+  height: calc(1.75rem + 2px);
   padding: 0.375rem 0.75rem;
-  /*font-size: 1rem;*/
+  font-size: 0.75rem;
   line-height: 1.5;
   color: #495057;
   background-color: #fff;
@@ -17798,8 +17798,8 @@ SIDEBAR STYLE
 }
 
 #sidebar.active {
-  min-width: 80px;
-  max-width: 80px;
+  min-width: 100px;
+  max-width: 100px;
   text-align: center;
 }
 
