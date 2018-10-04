@@ -203,13 +203,25 @@ Route::get('settings/ezpp/payroll/time_interpretation', function(){
 	return view('settings.ezpp.payroll.time_interpretation');
 });
 
+//Payroll Period
+Route::get('settings/ezpp/payroll/payroll_period', function(){
+	return view('settings.ezpp.payroll.payroll_period');
+});
 
+//National Holiday
+Route::get('settings/ezpp/payroll/national_holiday', function(){
+	return view('settings.ezpp.payroll.national_holiday');
+});
 
+//Holiday per Branch
+Route::get('settings/ezpp/payroll/holiday_per_branch', function(){
+	return view('settings.ezpp.payroll.holiday_per_branch');
+});
 
-
-
-
-
+//Chart of Accounts
+Route::get('settings/financials/chart_of_accounts', function(){
+	return view('settings.financials.chart_of_accounts');
+});
 
 
 
