@@ -223,6 +223,11 @@ Route::get('settings/financials/chart_of_accounts', function(){
 	return view('settings.financials.chart_of_accounts');
 });
 
+//GL Accounts
+Route::get('settings/financials/gl_determination', function(){
+	return view('settings.financials.gl_determination');
+});
+
 
 
 
