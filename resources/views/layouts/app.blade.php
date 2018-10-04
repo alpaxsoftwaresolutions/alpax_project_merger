@@ -14,7 +14,9 @@
 	<script type="text/javascript" src="{{asset('js/solid.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/animate.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/select2.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('js/tinymce/tinymce.min.js')}}"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/r-2.2.2/datatables.min.js"></script>
+
 
 	<title>{{config('app.name', 'Merger')}}</title>
 
@@ -30,7 +32,6 @@
 
 		input {
 			border: 1px solid transparent;
-			background-color: #f1f1f1;
 			padding: 10px;
 			font-size: 13px;
 		}
@@ -66,6 +67,7 @@
 
 <script type="text/javascript" src="{{asset('js/moment.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/solid.min.js')}}"></script>
+
 
 <script type="text/javascript">
 	$(document).ready(function () {

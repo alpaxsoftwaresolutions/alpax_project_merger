@@ -9,7 +9,7 @@ class companyController extends Controller
 {
 	public function index(){
 		$company =  company::where('deleted_at',NULL)->get();
-    	return view('pages.company.view',compact('company'));
+    	return view('settings.company_profile',compact('company'));
 	}
 	public function create(){
 		return view('pages.company.form');

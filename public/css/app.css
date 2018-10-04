@@ -2220,9 +2220,9 @@ pre code {
 .form-control {
   display: block;
   width: 100%;
-  height: calc(1.75rem + 2px);
+  height: calc(2.25rem + 2px);
   padding: 0.375rem 0.75rem;
-  font-size: 0.75rem;
+  font-size: 1rem;
   line-height: 1.5;
   color: #495057;
   background-color: #fff;
@@ -17718,6 +17718,10 @@ DEMO STYLE
 
 /* @import "https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700"; */
 
+ul ul {
+  margin: 10px;
+}
+
 body {
   font-family: 'Raleway', sans-serif;
   background: #fafafa;
@@ -17798,8 +17802,8 @@ SIDEBAR STYLE
 }
 
 #sidebar.active {
-  min-width: 100px;
-  max-width: 100px;
+  min-width: 80px;
+  max-width: 80px;
   text-align: center;
 }
 
