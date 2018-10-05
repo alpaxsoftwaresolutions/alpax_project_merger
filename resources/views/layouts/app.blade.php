@@ -84,7 +84,7 @@
 		});
 
 	});
-	var curloc = location.pathname;
+var curloc = location.pathname;
 	if(curloc !='/'){
 		$('a[href="'+curloc+'"').closest('li').addClass('active');
 		$('a[href="'+curloc+'"').closest('ul').addClass('show');

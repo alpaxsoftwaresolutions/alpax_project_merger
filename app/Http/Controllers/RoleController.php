@@ -10,10 +10,15 @@ use Carbon\Carbon;
 
 class RoleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('role:admin');
+    }
     public function index()
     {
         $roles = role::where('deleted_at', '=', NULL )->get();
-		    return view('settings.user_management.roles',compact('roles'));
+		    return view('settings.general_settings.user_management.roles',compact('roles'));
     }
 
     public function store(Request $request)

@@ -12,6 +12,11 @@ use Carbon\Carbon;
 	
 class authController extends Controller
 {
+	public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('role:admin');
+    }
 	 public function index(){
 		$auths = DB::table('authentication_items')
 	 		->join('authentications' , 'auth_id', '=','authentications.id')

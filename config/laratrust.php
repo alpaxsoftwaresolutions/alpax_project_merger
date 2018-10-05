@@ -84,7 +84,7 @@ return [
         /**
          * Role model
          */
-        'role' => 'App\Role',
+        'role' => 'App\role',
 
         /**
          * Permission model
