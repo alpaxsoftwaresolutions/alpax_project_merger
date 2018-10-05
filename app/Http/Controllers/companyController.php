@@ -2,14 +2,35 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\company;
+use App\Authentications;
+use App\AuthenticationItems;
+use App\role;
+use DB;
 use Carbon\Carbon;
 class companyController extends Controller
 {
+	public function __construct()
+    {
+    	$auths = DB::table('authentication_items')
+	 		->join('authentications' , 'auth_id', '=','authentications.id')
+	 		->join('roles' , 'authentication_items.role', '=','roles.id')
+	 		->select('roles.name')
+	 		->where('authentications.deleted_at',NULL)
+	 		->where('authentications.name','Company Profile')
+	 		->get();
+        $this->middleware('auth');
+        foreach($auths as $auth)
+		{
+		   $names = $auth->name;
+		}
+        $this->middleware('role:'.$names);
+    }
 	public function index(){
 		$company =  company::where('deleted_at',NULL)->get();
-    	return view('settings.company_profile',compact('company'));
+    	return view('settings.general_settings.company_profile',compact('company'));
 	}
 	public function store(Request $request){
 		if(request()->has('company_id_edit')){

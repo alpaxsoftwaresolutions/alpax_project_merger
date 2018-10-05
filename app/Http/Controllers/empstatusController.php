@@ -30,7 +30,7 @@ class empstatusController extends Controller
 		
 	}
      public function delete(Request $request){
-		 $esId = $request['es_id_delete'];
+		 $esId = $request['violations_id_delete'];
 	 		 $delete_es = empstatus::where('id', $esId)->update([
 	         'deleted_at'  => Carbon::now()
 	       ]);
