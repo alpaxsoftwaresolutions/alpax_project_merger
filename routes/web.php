@@ -73,11 +73,18 @@ Route::get('/branch/delete/{branchID}', 'branchController@delete')->name('delete
 Route::get('/department', 'departmentController@index')->name('index.department');
 //Save and Edit Departments
 Route::post('/department/create', 'departmentController@store')->name('store.department'); 
-//Delete Branch
+//Delete Departments
 Route::post('/department/delete', 'departmentController@delete')->name('delete.department');
 
 
 
+
+//View Employement Status
+Route::get('/empstatus', 'empstatusController@index')->name('index.empstatus');
+//Save and Edit Employement Status
+Route::post('/empstatus/create', 'empstatusController@store')->name('store.empstatus'); 
+//Delete Employement Status
+Route::post('/empstatus/delete', 'empstatusController@delete')->name('delete.empstatus');
 
 
 //Employment Status
