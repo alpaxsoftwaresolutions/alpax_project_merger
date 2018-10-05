@@ -1,3 +1,7 @@
+@extends('layouts.app')
+
+@section('content')
+
 <form action="" method="post" role="form">
     {{csrf_field()}}
      <div class="form-group">
@@ -8,3 +12,5 @@
     </div>
     <button>Save</button>
 </form>
+
+@endsection

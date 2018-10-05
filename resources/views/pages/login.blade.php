@@ -117,6 +117,11 @@
 							<hr>
 
 							<div class="form-group">
+								<label>Company</label>
+								<select class="select2" style="width: 100%" name="company"></select>
+							</div>
+
+							<div class="form-group">
 								<label>Username</label>
 								<input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
 
@@ -171,11 +176,11 @@
 										<label>Full Name</label>
 										<input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
 
-			                                @if ($errors->has('name'))
-			                                    <span class="help-block">
-			                                        <strong>{{ $errors->first('name') }}</strong>
-			                                    </span>
-			                                @endif
+										@if ($errors->has('name'))
+										<span class="help-block">
+											<strong>{{ $errors->first('name') }}</strong>
+										</span>
+										@endif
 									</div>
 								</div>
 
@@ -184,11 +189,11 @@
 										<label>Email Address</label>
 										<input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
 
-		                                @if ($errors->has('email'))
-		                                    <span class="help-block">
-		                                        <strong>{{ $errors->first('email') }}</strong>
-		                                    </span>
-		                                @endif
+										@if ($errors->has('email'))
+										<span class="help-block">
+											<strong>{{ $errors->first('email') }}</strong>
+										</span>
+										@endif
 									</div>
 								</div>
 
@@ -197,11 +202,11 @@
 										<label>Password</label>
 										<input id="password" type="password" class="form-control" name="password" required>
 
-		                                @if ($errors->has('password'))
-		                                    <span class="help-block">
-		                                        <strong>{{ $errors->first('password') }}</strong>
-		                                    </span>
-		                                @endif
+										@if ($errors->has('password'))
+										<span class="help-block">
+											<strong>{{ $errors->first('password') }}</strong>
+										</span>
+										@endif
 									</div>
 								</div>
 
@@ -221,8 +226,8 @@
 
 									<div class="form-group">
 										<button type="submit" class="btn btn-primary">
-	                                    Register
-	                                </button>
+											Register
+										</button>
 									</div>
 
 									<label>Back to Login</label>
@@ -252,8 +257,10 @@
 	<script type="text/javascript" src="{{asset('js/popper.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/moment.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/solid.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('js/select2.min.js')}}"></script>
 
 	<script type="text/javascript">
+		$("select[name='company']").select2();
 		$("#registration").on("click", function(){
 			jQuery("#login_form").fadeOut(500, function(){
 				$("#login_form").css("display", "none");
