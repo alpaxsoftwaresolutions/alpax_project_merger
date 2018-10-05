@@ -92,12 +92,36 @@ Route::get('pages/login', function(){
 	return view('pages.login');
 });
 
+//SSS Table
+Route::get('settings/ezpp/tables/sss_table', function(){
+	return view('settings.ezpp.tables.sss_table');
+});
 
+//Pagibig Table
+Route::get('settings/ezpp/tables/pagibig_table', function(){
+	return view('settings.ezpp.tables.pagibig_table');
+});
 
-
+//PhilHealth Table
+Route::get('settings/ezpp/tables/philhealth_table', function(){
+	return view('settings.ezpp.tables.philhealth_table');
 });
 
 
+//Settings -> EZPP -> Payroll
+
+//Payroll Configuration
+Route::get('/settings/ezpp/payroll/payroll_configuration', 'PayrollConfigurationController@index')->name('index.payroll_configuration');
+
+Route::post('/settings/ezpp/payroll/payroll_configuration/create', 'PayrollConfigurationController@store')->name('store.payroll_configuration');
+
+Route::get('/settings/ezpp/payroll/payroll_configuration/delete/{config_id}', 'PayrollConfigurationController@delete')->name('delete.payroll_configuration');
+
+	//GL Accounts
+Route::get('settings/financials/gl_determination', function(){
+	return view('settings.financials.gl_determination');
+});
+});
 
 
 //Create Database Table
