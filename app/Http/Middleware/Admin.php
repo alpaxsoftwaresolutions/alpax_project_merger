@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-
+use Auth;
 class Admin
 {
     /**
@@ -15,12 +15,12 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        if ( Auth::check() && Auth::user()->isAdmin() )
+        if ( $request->user()->isAdmin($roleName) )
         {
             return $next($request);
         }
 
-        return redirect('/');
+        abort(403, 'This action is unauthorized.');
 
     }
 }

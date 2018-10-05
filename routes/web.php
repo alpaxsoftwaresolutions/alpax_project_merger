@@ -16,7 +16,8 @@
 
 Auth::routes();
 Route::get('/', 'Auth\LoginController@showLoginForm')->name('login');
-Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('/login', 'Auth\LoginController@login')->name('post.login');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::group(['middleware' => ['auth']], function () {
@@ -38,7 +39,7 @@ Route::post('/role/create', 'roleController@store')->name('store.role');
 Route::get('/role/delete/{roleId}', 'roleController@delete')->name('delete.role'); 
 
 //View company
-Route::get('/company/', 'companyController@index')->name('index.company'); 
+Route::get('/company', 'companyController@index')->name('index.company'); 
 //Saving and Editting company 
 Route::post('/company/create/', 'companyController@store')->name('store.company');
 //Delete company

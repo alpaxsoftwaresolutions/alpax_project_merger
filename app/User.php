@@ -62,4 +62,17 @@ class User extends Authenticatable
       }
       return false;
     }
+    public function isAdmin($roleName)
+    {
+      foreach ($this->roles()->get() as $role)
+        {
+            if ($role->name == $roleName)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 }

@@ -108,18 +108,15 @@
 
 					<div id="login_form" class="col-lg-12">
 
-						<form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
-
+						<form method="post" action="{{ route('post.login') }}" aria-label="{{ __('Login') }}">
+							{{csrf_field()}}
 							{{-- <h1>Ez Pay Plus</h1> --}}
 
 							<h6>Please enter your credentials</h6>
 
 							<hr>
 
-							<div class="form-group">
-								<label>Company</label>
-								<select class="select2" style="width: 100%" name="company"></select>
-							</div>
+		
 
 							<div class="form-group">
 								<label>Username</label>

@@ -21,6 +21,7 @@ class RedirectIfAuthenticated
             return redirect('/company');
         }
 
+
         return $next($request);
     }
 }

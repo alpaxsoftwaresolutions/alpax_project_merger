@@ -30,20 +30,22 @@ class companyController extends Controller
 	 		->count();
 	 	$names = "";
 
-        $this->middleware('auth');
+       
         $i = 0;
         foreach($auths as $auth)
 		{
 			if($i == $auths_count){
 				$names += $auth->name;
 			}else{
-				$names = $auth->name . "|" . $names;
+				$names = $auth->name . "," . $names;
 			}
 			$i++;
 		   
-		}
-		dd($names);
-        $this->middleware('role:'.$names);
+		} 
+		$this->middleware('auth');
+		$this->middleware('admin:admin');
+		$this->middleware('role:guest');
+
     }
 	public function index(){
 		$company =  company::where('deleted_at',NULL)->get();

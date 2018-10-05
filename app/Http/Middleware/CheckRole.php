@@ -16,7 +16,7 @@ class CheckRole
     public function handle($request, Closure $next)
     {
        if (! $request->user()->hasRole($role)) {
-           return view('settings.general_settings');
+            abort(401, 'This action is unauthorized.');
         }
         else{
             return $next($request);
