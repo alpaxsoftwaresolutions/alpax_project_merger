@@ -6,7 +6,7 @@
 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-2 mb-2">
 		<div class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
 			<div class="d-flex justify-content-between align-items-center w-100">
-				<strong class="text-gray-dark"><h3>Profit Center</h3></strong>
+				<strong class="text-gray-dark"><h3>Earnings</h3></strong>
 				<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#m_create"><i class="fa fa-plus"></i> Add</button>
 			</div>
 		</div>
@@ -34,7 +34,7 @@
 		<div class="modal-content">
 
 			<div class="modal-header">
-				<h5 class="modal-title">Create Profit Center</h5>
+				<h5 class="modal-title">Create Earning</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -45,8 +45,17 @@
 
 					<div class="col-md-12 col-xs-12">
 						<div class="form-group">
-							<label>Name</label>
-							<input type="text" class="form-control" name="name">
+							<label>Code</label>
+							<input type="text" class="form-control" name="code">
+						</div>
+					</div>
+
+					<div class="col-md-12 col-xs-12">
+						<div class="form-group">
+							<label>GL Account</label>
+							<select class="select2" name="gl_account" style="width: 100%">
+								
+							</select>
 						</div>
 					</div>
 
@@ -76,7 +85,7 @@
 		<div class="modal-content">
 
 			<div class="modal-header">
-				<h5 class="modal-title">Edit Profit Center</h5>
+				<h5 class="modal-title">Edit Earning</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -87,8 +96,17 @@
 
 					<div class="col-md-12 col-xs-12">
 						<div class="form-group">
-							<label>Name</label>
-							<input type="text" class="form-control" name="name">
+							<label>Code</label>
+							<input type="text" class="form-control" name="code">
+						</div>
+					</div>
+
+					<div class="col-md-12 col-xs-12">
+						<div class="form-group">
+							<label>GL Account</label>
+							<select class="select2" name="gl_account" style="width: 100%">
+								
+							</select>
 						</div>
 					</div>
 
@@ -114,5 +132,6 @@
 
 <script type="text/javascript">
 	$(".table").DataTable();
+	$("select[name='gl_account']").select2();
 </script>
 @endsection
