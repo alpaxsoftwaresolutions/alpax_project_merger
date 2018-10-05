@@ -21,11 +21,28 @@ class companyController extends Controller
 	 		->where('authentications.deleted_at',NULL)
 	 		->where('authentications.name','Company Profile')
 	 		->get();
+	 	$auths_count = DB::table('authentication_items')
+	 		->join('authentications' , 'auth_id', '=','authentications.id')
+	 		->join('roles' , 'authentication_items.role', '=','roles.id')
+	 		->select('roles.name')
+	 		->where('authentications.deleted_at',NULL)
+	 		->where('authentications.name','Company Profile')
+	 		->count();
+	 	$names = "";
+
         $this->middleware('auth');
+        $i = 0;
         foreach($auths as $auth)
 		{
-		   $names = $auth->name;
+			if($i == $auths_count){
+				$names += $auth->name;
+			}else{
+				$names = $auth->name . "|" . $names;
+			}
+			$i++;
+		   
 		}
+		dd($names);
         $this->middleware('role:'.$names);
     }
 	public function index(){
