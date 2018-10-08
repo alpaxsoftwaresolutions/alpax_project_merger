@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Department;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use DB;
 
 class departmentController extends Controller
 {
@@ -27,7 +28,8 @@ class departmentController extends Controller
 			$names[] = $auth->name ; 
 		} 
 		Auth::user()->authorizeRoles($names);
-    	$department = Department::where('deleted_at',NULL)->get();
+		$company_id = Auth::user()->company_id;
+    	$department = Department::where('deleted_at',NULL)->where('company_id',$company_id)->get();
 		return view('settings.ezpp.hris.departments',compact('department'));
     }
     public function store(Request $request){
@@ -35,13 +37,15 @@ class departmentController extends Controller
 			 $deptId = $request['department_id_edit'];
 	 		 $update_auths = Department::where('id', $deptId)->update([
 	         'name'  => $request['department_name_edit'],
-	         'description' =>  $request['department_description_edit']
+	         'description' =>  $request['department_description_edit'],
+	         'company_id' => Auth::user()->company_id
 	       ]);
 	 		return back()->with('success','Department Editted');
     	}else{
     		$department = new Department;
 		 	$department->name=$request['code'];
 		 	$department->description=$request['description'];
+		 	$department->company_id = Auth::user()->company_id;
 		 	$department->save();
 	    	return back()->with('success','New Department Added');
     	}

@@ -29,13 +29,16 @@ class branchController extends Controller
     {
       $names[] = $auth->name ; 
     } 
-    Auth::user()->authorizeRoles($names);
+    Auth::user()->authorizeRoles($names); 
+    $company_id = Auth::user()->company_id;
        $branch = DB::table('company')
          ->join('branch' , 'company.id', '=','branch.company_id')
          ->select('company.name as name2','branch.name','branch.code','branch.id')
          ->where('branch.deleted_at',NULL)
+         ->where('branch.company_id',$company_id)
          ->get();
-       $company = company::where('deleted_at',NULL)->get();
+      
+       $company = company::where('deleted_at',NULL)->where('')->get();
 	 return view('pages.branch.view',compact('branch','company'));
    }
 

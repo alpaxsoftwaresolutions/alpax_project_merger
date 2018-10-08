@@ -73,6 +73,13 @@ a:focus {
     outline: none !important;
     border: none;
 }
+.modal-full {
+    min-width: 95%;
+}
+
+.modal-full .modal-content {
+    min-height: 100%;
+}
 
 .line {
     width: 100%;
