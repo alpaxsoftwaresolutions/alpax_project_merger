@@ -4,9 +4,40 @@ DEMO STYLE
 
 /* @import "https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700"; */
 
+$sidebar-background-color: #212c30;
+$sidebar-active-color: #141a1e;
+
+
+.modal-full {
+    min-width: 95%;
+}
+
+.modal-full .modal-content {
+    min-height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Poppins'
+}
+
+input {
+    border: 1px solid transparent;
+    padding: 10px;
+    font-size: 13px;
+}
+
+input[type=text] {
+    width: 100%;
+}
+input[type=submit] {
+    background-color: DodgerBlue;
+    color: #fff;
+}
+
 body {
     font-family: 'Raleway', sans-serif;
-    background: #fafafa;
+    background: #f9f9f9;
+    font-size: 12px;
 }
 
 p {
@@ -50,20 +81,17 @@ a:focus {
     margin: 40px 0;
 }
 
-ul ul{
-  margin: 10px;
-}
 
 /*i,
 span {
     display: inline-block;
-}*/
+    }*/
 
 /* ---------------------------------------------------
 SIDEBAR STYLE
 ----------------------------------------------------- */
 
-.wrapper {
+.wrapper { 
     display: flex;
     align-items: stretch;
 }
@@ -71,14 +99,14 @@ SIDEBAR STYLE
 #sidebar {
     min-width: 250px;
     max-width: 250px;
-    background: #009688;
+    background: $sidebar-background-color;
     color: #fff;
     transition: all 0.3s;
 }
 
 #sidebar.active {
-    min-width: 80px;
-    max-width: 80px;
+    min-width: 150px;
+    max-width: 150px;
     text-align: center;
 }
 
@@ -123,7 +151,7 @@ SIDEBAR STYLE
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #009688;
+    background: $sidebar-background-color;
 }
 
 #sidebar .sidebar-header strong {
@@ -143,7 +171,7 @@ SIDEBAR STYLE
 }
 
 #sidebar ul li a:hover {
-    color: #26A69A;
+    color: $sidebar-active-color;
     background: #fff;
 }
 
@@ -154,7 +182,7 @@ SIDEBAR STYLE
 #sidebar ul li.active>a,
 a[aria-expanded="true"] {
     color: #fff;
-    background: #26A69A;
+    background: $sidebar-active-color;
 }
 
 a[data-toggle="collapse"] {
@@ -172,7 +200,7 @@ a[data-toggle="collapse"] {
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    background: #009688;
+    background: $sidebar-background-color;
 }
 
 ul.CTAs {
@@ -194,7 +222,7 @@ a.download {
 
 a.article,
 a.article:hover {
-    background: #6d7fcc !important;
+    background: #f20025 !important;
     color: #fff !important;
 }
 
