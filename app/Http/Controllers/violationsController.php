@@ -5,10 +5,28 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\violations;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class violationsController extends Controller
 {
+	public function __construct()
+    {
+    	$this->middleware('auth');
+    }
     public function index(){
+    	 $auths = DB::table('authentication_items')
+          ->join('authentications' , 'auth_id', '=','authentications.id')
+          ->join('roles' , 'authentication_items.role', '=','roles.id')
+          ->select('roles.name')
+          ->where('authentications.deleted_at',NULL)
+          ->where('authentications.name','Violation')
+          ->get();
+            $names = [];
+            foreach($auths as $auth)
+        {
+          $names[] = $auth->name ; 
+        } 
+        Auth::user()->authorizeRoles($names);
 		$violations =  violations::where('deleted_at',NULL)->get();
     	return  view('settings.ezpp.hris.violations',compact('violations'));
 	}

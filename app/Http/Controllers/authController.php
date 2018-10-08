@@ -8,16 +8,29 @@ use App\Authentication;
 use App\role;
 use App\AuthenticationItems;
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\Auth;
 	
 class authController extends Controller
 {
 	public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('role:admin');
     }
 	 public function index(){
+	 	$auths = DB::table('authentication_items')
+	 		->join('authentications' , 'auth_id', '=','authentications.id')
+	 		->join('roles' , 'authentication_items.role', '=','roles.id')
+	 		->select('roles.name')
+	 		->where('authentications.deleted_at',NULL)
+	 		->where('authentications.name','Modules')
+	 		->get();
+
+        $names = [];
+        foreach($auths as $auth)
+		{
+			$names[] = $auth->name ; 
+		} 
+		Auth::user()->authorizeRoles($names);
 		$auths = DB::table('authentication_items')
 	 		->join('authentications' , 'auth_id', '=','authentications.id')
 	 		->join('roles' , 'authentication_items.role', '=','roles.id')

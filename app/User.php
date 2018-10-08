@@ -5,7 +5,8 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laratrust\Traits\LaratrustUserTrait;
-
+use App\Role;
+use App\Auth;
 class User extends Authenticatable
 {
     use Notifiable;
@@ -29,16 +30,14 @@ class User extends Authenticatable
     ];
     public function roles()
     {
-        return $this
-            ->belongsToMany('App\Role')
-            ->withTimestamps();
+      return $this->belongsToMany(Role::class);
     }
     public function authorizeRoles($roles)
     {
       if ($this->hasAnyRole($roles)) {
         return true;
       }
-      abort(401, 'This action is unauthorized.');
+      abort(403, 'This action is unauthorized.');
     }
     public function hasAnyRole($roles)
     {
@@ -55,13 +54,15 @@ class User extends Authenticatable
       }
       return false;
     }
-    public function hasRole($role)
+    public function hasRole($roles)
     {
-      if ($this->roles()->where('name', $role)->first()) {
+
+      if ($this->roles()->where('name', $roles)->first()) {
         return true;
       }
       return false;
     }
+   
     public function isAdmin($roleName)
     {
       foreach ($this->roles()->get() as $role)

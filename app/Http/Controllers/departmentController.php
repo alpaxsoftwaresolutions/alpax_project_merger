@@ -5,10 +5,28 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Department;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class departmentController extends Controller
 {
+	public function __construct()
+    {
+		$this->middleware('auth');
+    }
     public function index(){
+		$auths = DB::table('authentication_items')
+	 		->join('authentications' , 'auth_id', '=','authentications.id')
+	 		->join('roles' , 'authentication_items.role', '=','roles.id')
+	 		->select('roles.name')
+	 		->where('authentications.deleted_at',NULL)
+	 		->where('authentications.name','Departments')
+	 		->get();
+        $names = [];
+        foreach($auths as $auth)
+		{
+			$names[] = $auth->name ; 
+		} 
+		Auth::user()->authorizeRoles($names);
     	$department = Department::where('deleted_at',NULL)->get();
 		return view('settings.ezpp.hris.departments',compact('department'));
     }

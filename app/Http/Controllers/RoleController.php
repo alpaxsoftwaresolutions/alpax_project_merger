@@ -7,16 +7,29 @@ use Illuminate\Support\Facades\Auth;
 use App\Authentication;
 use App\role;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class RoleController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
-        $this->middleware('role:admin');
+    $this->middleware('auth');
     }
     public function index()
     {
+          $auths = DB::table('authentication_items')
+          ->join('authentications' , 'auth_id', '=','authentications.id')
+          ->join('roles' , 'authentication_items.role', '=','roles.id')
+          ->select('roles.name')
+          ->where('authentications.deleted_at',NULL)
+          ->where('authentications.name','Roles')
+          ->get();
+            $names = [];
+            foreach($auths as $auth)
+        {
+          $names[] = $auth->name ; 
+        } 
+        Auth::user()->authorizeRoles($names);
         $roles = role::where('deleted_at', '=', NULL )->get();
 		    return view('settings.general_settings.user_management.roles',compact('roles'));
     }

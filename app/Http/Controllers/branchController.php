@@ -7,10 +7,29 @@ use App\Branch;
 use DB;
 use App\company;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class branchController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
    public function index(){
+        $auths = DB::table('authentication_items')
+      ->join('authentications' , 'auth_id', '=','authentications.id')
+      ->join('roles' , 'authentication_items.role', '=','roles.id')
+      ->select('roles.name')
+      ->where('authentications.deleted_at',NULL)
+      ->where('authentications.name','Branch')
+      ->get();
+
+        $names = [];
+        foreach($auths as $auth)
+    {
+      $names[] = $auth->name ; 
+    } 
+    Auth::user()->authorizeRoles($names);
        $branch = DB::table('company')
          ->join('branch' , 'company.id', '=','branch.company_id')
          ->select('company.name as name2','branch.name','branch.code','branch.id')

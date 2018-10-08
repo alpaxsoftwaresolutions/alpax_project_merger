@@ -8,46 +8,30 @@ use App\company;
 use App\Authentications;
 use App\AuthenticationItems;
 use App\role;
+use Illuminate\Support\Facades\Auth;
 use DB;
 use Carbon\Carbon;
 class companyController extends Controller
 {
 	public function __construct()
     {
-    	$auths = DB::table('authentication_items')
+		$this->middleware('auth');
+    }
+	public function index(){
+		$auths = DB::table('authentication_items')
 	 		->join('authentications' , 'auth_id', '=','authentications.id')
 	 		->join('roles' , 'authentication_items.role', '=','roles.id')
 	 		->select('roles.name')
 	 		->where('authentications.deleted_at',NULL)
 	 		->where('authentications.name','Company Profile')
 	 		->get();
-	 	$auths_count = DB::table('authentication_items')
-	 		->join('authentications' , 'auth_id', '=','authentications.id')
-	 		->join('roles' , 'authentication_items.role', '=','roles.id')
-	 		->select('roles.name')
-	 		->where('authentications.deleted_at',NULL)
-	 		->where('authentications.name','Company Profile')
-	 		->count();
-	 	$names = "";
 
-       
-        $i = 0;
+        $names = [];
         foreach($auths as $auth)
 		{
-			if($i == $auths_count){
-				$names += $auth->name;
-			}else{
-				$names = $auth->name . "," . $names;
-			}
-			$i++;
-		   
+			$names[] = $auth->name ; 
 		} 
-		$this->middleware('auth');
-		$this->middleware('admin:admin');
-		$this->middleware('role:guest');
-
-    }
-	public function index(){
+		Auth::user()->authorizeRoles($names);
 		$company =  company::where('deleted_at',NULL)->get();
     	return view('settings.general_settings.company_profile',compact('company'));
 	}
