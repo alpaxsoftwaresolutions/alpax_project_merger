@@ -29,6 +29,8 @@
 				</tr>
 			</thead>
 		</table>
+
+		<button class="btn btn-primary" data-toggle="modal" data-target="#m_view"><i class="fa fa-eye"></i></button>
 	</div>
 
 </div>
@@ -227,7 +229,7 @@
 														<label class="font-weight-bold">Employee Status</label>
 														<select class="select2" name="employee_status" id="employee_status" style="width: 100%">
 															@foreach($departments as $dept)
-																<option value = "{{$dept->id}}">{{$dept->name}}</option>
+															<option value = "{{$dept->id}}">{{$dept->name}}</option>
 															@endforeach
 														</select>
 													</div>
@@ -462,6 +464,350 @@
 	</div>
 </div>
 <!-- Create Employee Information Modal -->
+
+<!-- View Employee Information -->
+<div class="modal fade" id="m_view" role="dialog" tabindex="-1" aria-labelledby="View Employee Information" aria-hidden="true" style="padding-left: 0px !important;">
+	<div class="modal-dialog modal-dialog-centered modal-full" role="document">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<h5 class="modal-title">View Employee Profile</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+
+			<div class="modal-body">
+				<div class="row">
+
+					<div class="col-lg-1 col-md-12 col-xs-12 mt-2 mb-2" style="height: 150px;">
+						<img src="{{asset('img/avatars/user.svg')}}" style="width: 100%; height: 100%;" class="py-3">
+					</div>
+
+					<div class="col-lg-5 col-md-12 col-xs-12 mt-2 mb-2">
+						<div class="row">
+							<div class="col-md-12 col-xs-12">
+								<h6 class="font-weight-bold border-bottom">Basic Information</h6>
+							</div>
+
+							<div class="col-md-6 col-xs-6">
+								<h6 class="small">Employee ID</h6>
+								<h6 id="emp_id_view">SOL-00001</h6>
+							</div>
+
+							<div class="col-md-6 col-xs-6">
+								<h6 class="small">Batch</h6>
+								<h6 id="emp_batch_view">Operations</h6>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-12 col-xs-12">
+								<hr style="margin-top: -2px;">
+							</div>
+
+							<div class="col-md-3 col-xs-3">
+								<h6 class="small">Last Name</h6>
+								<h6 id="last_name_view">Dela Cruz</h6>
+							</div>
+
+							<div class="col-md-3 col-xs-3">
+								<h6 class="small">First Name</h6>
+								<h6 id="first_name_view">Juan</h6>
+							</div>
+
+							<div class="col-md-3 col-xs-3">
+								<h6 class="small">Middle Name</h6>
+								<h6 id="middle_name_view">Protacio</h6>
+							</div>
+
+							<div class="col-md-3 col-xs-3">
+								<h6 class="small">Suffix</h6>
+								<h6 id="suffix_view">Jr.</h6>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-12 col-xs-12">
+								<hr style="margin-top: -2px;">
+							</div>
+
+							<div class="col-md-3 col-xs-3">
+								<h6 class="small">Birthday</h6>
+								<h6 id="birthday_view">July 23, 1997</h6>
+							</div>
+
+							<div class="col-md-1 col-xs-1">
+								<h6 class="small">Age</h6>
+								<h6 id="age_view">18</h6>
+							</div>
+
+							<div class="col-md-3 col-xs-3">
+								<h6 class="small">Chinese Zodiac</h6>
+								<h6 id="chinese_zodiac_view">Year of the Ox</h6>
+							</div>
+
+							<div class="col-md-2 col-xs-2">
+								<h6 class="small">Sex</h6>
+								<h6 id="sex_view">Male</h6>
+							</div>
+
+							<div class="col-md-3 col-xs-3">
+								<h6 class="small">Civil Status</h6>
+								<h6 id="civil_status_view">Single</h6>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-6 col-md-12 col-xs-12 mt-2 mb-2">
+						<div class="row">
+							<div class="col-lg-12 col-xs-12">
+								<nav style="width: 100%">
+									<div class="nav nav-tabs" id="nav-tab" role="tablist">
+										<a class="nav-item nav-link active" id="nav-emp-tab" data-toggle="tab" href="#nav-emp" role="tab" aria-controls="nav-emp" aria-selected="true">Employee Information</a>
+										<a class="nav-item nav-link" id="nav-per_info-tab" data-toggle="tab" href="#nav-per_info" role="tab" aria-controls="nav-per_info" aria-selected="false">Personal Information</a>
+										<a class="nav-item nav-link" id="nav-sal_info-tab" data-toggle="tab" href="#nav-sal_info" role="tab" aria-controls="nav-sal_info" aria-selected="false">Salary Information</a>
+									</div>
+								</nav>
+
+								<div class="tab-content" id="nav-tabContent">
+
+									<div class="tab-pane fade show active border" id="nav-emp" role="tabpanel">
+										<div class="col-lg-12 col-md-12 col-xs-12 mt-3 mb-3">
+											<div class="row">
+
+												<div class="col-lg-12 col-md-12 col-xs-12">
+													<h6 class="font-weight-bold">Employee Information</h6>
+												</div>
+
+												<div class="col-md-12 col-xs-12">
+													<hr style="margin-top: -2px;">
+												</div>
+
+												<div class="col-lg-3 col-md-3 col-xs-12">
+													<h6 class="small">Branch</h6>
+													<h6 id="branch_view">Head Office</h6>
+												</div>
+
+												<div class="col-lg-3 col-md-3 col-xs-12">
+													<h6 class="small">Department</h6>
+													<h6 id="department_view">Management</h6>
+												</div>
+
+												<div class="col-lg-3 col-md-3 col-xs-12">
+													<h6 class="small">Position</h6>
+													<h6 id="position_view">Security Guard</h6>
+												</div>
+
+												<div class="col-lg-3 col-md-3 col-xs-12">
+													<h6 class="small">Date Hired</h6>
+													<h6 id="date_hired_view">May 28, 2018</h6>
+												</div>
+
+											</div>
+
+											<div class="row mt-4 mb-4">
+
+												<div class="col-lg-3 col-md-3 col-xs-12">
+													<h6 class="small">Primary Profit Center</h6>
+													<h6 id="primary_profit_center_view">TEJ</h6>
+												</div>
+
+												<div class="col-lg-3 col-md-3 col-xs-12">
+													<h6 class="small">Secondary Profit Center</h6>
+													<h6 id="secondary_profit_center_view">Convergys</h6>
+												</div>
+
+												<div class="col-lg-3 col-md-3 col-xs-12">
+													<h6 class="small">Employee Status</h6>
+													<h6 id="employee_status_view">Probationary</h6>
+												</div>
+
+												<div class="col-lg-3 col-md-3 col-xs-12">
+													<h6 class="small">Employment Status</h6>
+													<h6 id="employment_status_view">Active</h6>
+												</div>
+
+												<div class="col-lg-3 col-md-3 col-xs-12">
+													<h6 class="small">Leave Credits</h6>
+													<h6 id="leave_credits_view">-</h6>
+												</div>
+
+											</div>
+
+											<div class="row">
+												<div class="col-lg-12 col-md-12 col-xs-12">
+													<h6 class="font-weight-bold">Government Mandatory IDs</h6>
+												</div>
+
+												<div class="col-md-12 col-xs-12">
+													<hr style="margin-top: -2px;">
+												</div>
+
+												<div class="col-lg-3 col-md-6 col-xs-12">
+													<h6 class="small">Tax Identification Number (TIN)</h6>
+													<h6 id="tin_view">1234-567-890</h6>
+												</div>
+
+												<div class="col-lg-3 col-md-6 col-xs-12">
+													<h6 class="small">Social Security System Number (SSS)</h6>
+													<h6 id="sss_view">1234-567-890</h6>
+												</div>
+
+												<div class="col-lg-3 col-md-6 col-xs-12">
+													<h6 class="small">Phil Health Number</h6>
+													<h6 id="philhealth_view">1234-567-890</h6>
+												</div>
+
+												<div class="col-lg-3 col-md-6 col-xs-12">
+													<h6 class="small">Pag IBIG Number</h6>
+													<h6 id="pagibig_view">1234-567-890</h6>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="tab-pane fade border" id="nav-per_info" role="tabpanel">
+										<div class="col-lg-12 col-md-12 col-xs-12 mt-3 mb-3">
+
+											<div class="row">
+												<div class="col-lg-12 col-md-12 col-xs-12">
+													<h6 class="font-weight-bold">Address</h6>
+												</div>
+
+												<div class="col-lg-12 col-md-12 col-xs-12">
+													<hr style="margin-top: -2px;">
+												</div>
+
+												<div class="col-lg-6 col-md-6 col-xs-12">
+													<h6 class="small">Present Address</h6>
+													<h6 id="present_address_view"></h6>
+												</div>
+
+												<div class="col-lg-3 col-md-3 col-xs-12">
+													<h6 class="small">City</h6>
+													<h6 id="city_view"></h6>
+												</div>
+
+												<div class="col-lg-3 col-md-3 col-xs-12">
+													<h6 class="small">Province</h6>
+													<h6 id="province_view"></h6>
+												</div>
+
+												<div class="col-lg-12 col-md-12 col-xs-12">
+													<h6 class="small">Permanent Address</h6>
+													<h6 id="permanent_address_view"></h6>
+												</div>
+											</div>
+
+											<div class="row mt-4 mb-4">
+												<div class="col-lg-12 col-md-12 col-xs-12">
+													<h6 class="font-weight-bold">Contact Information</h6>
+												</div>
+
+												<div class="col-lg-12 col-md-12 col-xs-12">
+													<hr style="margin-top: -2px;">
+												</div>
+
+												<div class="col-lg-3 col-md-6 col-xs-12">
+													<h6 class="small">Mobile Number</h6>
+													<h6 id="mobile_number_view">(+69)999-999-9999</h6>
+												</div>
+
+												<div class="col-lg-3 col-md-6 col-xs-12">
+													<h6 class="small">Telephone Number</h6>
+													<h6 id="tel_number_view">(+69)999-999-9999</h6>
+												</div>
+
+												<div class="col-lg-3 col-md-6 col-xs-12">
+													<h6 class="small">Personal Email Address</h6>
+													<h6 id="personal_email_view">(+69)999-999-9999</h6>
+												</div>
+
+												<div class="col-lg-3 col-md-6 col-xs-12">
+													<h6 class="small">Company Email Address</h6>
+													<h6 id="company_email_view">(+69)999-999-9999</h6>
+												</div>
+											</div>
+
+											<div class="row">
+												<div class="col-lg-12 col-md-12 col-xs-12">
+													<h6 class="font-weight-bold">Emergency Contact Person</h6>
+												</div>
+
+												<div class="col-lg-12 col-md-12 col-xs-12">
+													<hr style="margin-top: -2px;">
+												</div>
+
+												<div class="col-lg-4 col-md-4 col-xs-12">
+													<h6 class="small">Contact Person</h6>
+													<h6 id="contact_person_view">Juan Dela Cruz</h6>
+												</div>
+
+												<div class="col-lg-4 col-md-4 col-xs-12">
+													<h6 class="small">Contact Number</h6>
+													<h6 id="emergency_contact_person_view">Juan Dela Cruz</h6>
+												</div>
+
+												<div class="col-lg-4 col-md-4 col-xs-12">
+													<h6 class="small">Relationship</h6>
+													<h6 id="relationship_view">Father</h6>
+												</div>
+											</div>
+
+										</div>
+									</div>
+
+									<div class="tab-pane fade border" id="nav-sal_info" role="tabpanel">
+										<div class="col-lg-12 col-md-12 col-xs-12 mt-3 mb-3">
+											<div class="row">
+
+												<div class="col-lg-12 col-md-12 col-xs-12">
+													<h6 class="font-weight-bold">Salary Information</h6>
+												</div>
+
+												<div class="col-lg-3 col-md-3 col-xs-12">
+													<h6 class="small">Bank</h6>
+													<h6 id="bank_view">BDO</h6>
+												</div>
+
+												<div class="col-lg-3 col-md-3 col-xs-12">
+													<h6 class="small">Basic Salary</h6>
+													<h6 id="basic_salary_view">BDO</h6>
+												</div>
+
+												<div class="col-lg-3 col-md-3 col-xs-12">
+													<h6 class="small">Time Interpretation</h6>
+													<h6 id="time_interpretation_view">BDO</h6>
+												</div>
+
+												<div class="col-lg-3 col-md-3 col-xs-12">
+													<h6 class="small">Cost of Living Allowance</h6>
+													<h6 id="cola_view">BDO</h6>
+												</div>
+
+											</div>
+										</div>
+									</div>
+
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="modal-footer">
+				<button class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- View Employee Information -->
+
 
 <script type="text/javascript">
 	$("#employee_table").DataTable({
