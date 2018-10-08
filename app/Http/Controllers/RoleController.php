@@ -8,6 +8,7 @@ use App\Authentication;
 use App\role;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use DB;
 
 class RoleController extends Controller
 {

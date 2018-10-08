@@ -136,6 +136,13 @@ ol ul,
 ul ol {
   margin-bottom: 0;
 }
+.modal-full {
+    min-width: 95%;
+}
+
+.modal-full .modal-content {
+    min-height: 100%;
+}
 
 dt {
   font-weight: 700;

@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\empstatus;
+use App\Department;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use DB;
 
 class empstatusController extends Controller
 {
@@ -28,7 +30,8 @@ class empstatusController extends Controller
 		} 
 		Auth::user()->authorizeRoles($names);
 		$status =  empstatus::where('deleted_at',NULL)->get();
-    	return  view('settings.ezpp.hris.employment_status',compact('status'));
+		$departments = Department::where('deleted_at',NULL)->get();
+    	return  view('settings.ezpp.hris.employment_status',compact('status','departments'));
 	}
 	public function store(Request $request){
 		if(request()->has('es_id_edit')){

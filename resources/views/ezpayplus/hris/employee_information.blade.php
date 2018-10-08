@@ -57,7 +57,7 @@
 					<div class="col-lg-3 col-xs-3">
 						<div class="form-group">
 							<label class="font-weight-bold">Batch</label>
-							<select class="select2" name="batch" style="width: 100%"></select>
+							<select class="select2" name="batch" id="batch" style="width: 100%"></select>
 						</div>
 					</div>
 
@@ -80,25 +80,25 @@
 						<div class="row">
 							<div class="col-md-3 col-xs-3">
 								<div class="form-group">
-									<input type="text" class="form-control-sm form-control" name="lname" placeholder="Last Name">
+									<input type="text" class="form-control-sm form-control" name="lname" id="lname"  placeholder="Last Name">
 								</div>
 							</div>
 
 							<div class="col-md-3 col-xs-3">
 								<div class="form-group">
-									<input type="text" class="form-control-sm form-control" name="fname" placeholder="First Name">
+									<input type="text" class="form-control-sm form-control" name="fname" id="fname" placeholder="First Name">
 								</div>
 							</div>
 
 							<div class="col-md-3 col-xs-3">
 								<div class="form-group">
-									<input type="text" class="form-control-sm form-control" name="mname" placeholder="Middle Name">
+									<input type="text" class="form-control-sm form-control" name="mname" id="mname" placeholder="Middle Name">
 								</div>
 							</div>
 
 							<div class="col-md-3 col-xs-3">
 								<div class="form-group">
-									<input type="text" class="form-control-sm form-control" name="suffix" placeholder="Suffix">
+									<input type="text" class="form-control-sm form-control" name="suffix" id="suffix" placeholder="Suffix">
 								</div>
 							</div>
 						</div>
@@ -108,28 +108,28 @@
 							<div class="col-md-2 col-xs-2">
 								<div class="form-group">
 									<label class="font-weight-bold">Birthday</label>
-									<input type="date" class="form-control form-control-sm" name="birthdate" placeholder="Birthday">
+									<input type="date" class="form-control form-control-sm" name="birthdate"  id="birthdate" placeholder="Birthday">
 								</div>
 							</div>
 
 							<div class="col-md-1 col-xs-1">
 								<div class="form-group">
 									<label class="font-weight-bold">Age</label>
-									<input type="text" class="form-control form-control-sm" name="zodiac" placeholder="" disabled>
+									<input type="text" class="form-control form-control-sm" name="age"  id="age" placeholder="" disabled>
 								</div>
 							</div>
 
 							<div class="col-md-3 col-xs-3">
 								<div class="form-group">
 									<label class="font-weight-bold">Zodiac Sign</label>
-									<input type="text" class="form-control form-control-sm" name="zodiac" placeholder="Zodiac Sign">
+									<input type="text" class="form-control form-control-sm" name="zodiac"  id="zodiac" placeholder="Zodiac Sign">
 								</div>
 							</div>
 
 							<div class="col-md-3 col-xs-3">
 								<div class="form-group">
 									<label class="font-weight-bold">Civil Status</label>
-									<select class="form-control form-control-sm" name="civil_status">
+									<select class="form-control form-control-sm" name="civil_status" id="civil_status">
 										<option value="Single">Single</option>
 										<option value="Married">Married</option>
 										<option value="Divorced">Divorced</option>
@@ -144,11 +144,11 @@
 									<label class="font-weight-bold">Gender</label>
 									<br>
 									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="radio" name="gender" id="male" value="Male">
+										<input class="form-check-input" type="radio" name="gender" id="gender" value="Male">
 										<label class="font-weight-bold" class="form-check-label" for="male">Male</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="radio" name="gender" id="female" value="Female">
+										<input class="form-check-input" type="radio" name="gender" id="gender" value="Female">
 										<label class="font-weight-bold" class="form-check-label" for="female">Female</label>
 									</div>
 								</div>
@@ -173,37 +173,62 @@
 												<div class="col-md-3 col-xs-3">
 													<div class="form-group">
 														<label class="font-weight-bold">Branch</label>
-														<select class="select2" name="branch" style="width: 100%"></select>
+														<select class="select2" name="branch" id="branch"  style="width: 100%">
+															@foreach($branch as $branches)
+															<option value = "{{$branches->id}}">{{$branches->name}}</option>
+															@endforeach
+														</select>
 													</div>
 												</div>
 
 												<div class="col-md-3 col-xs-3">
 													<div class="form-group">
 														<label class="font-weight-bold">Department</label>
-														<select class="select2" name="department" style="width: 100%"></select>
+														<select class="select2" name="department" id="department" style="width: 100%">
+															@foreach($departments as $dept)
+															<option value = "{{$dept->id}}">{{$dept->name}}</option>
+															@endforeach
+														</select>
 													</div>
 												</div>
 
 												<div class="col-md-3 col-xs-3">
 													<div class="form-group">
 														<label class="font-weight-bold">Position</label>
-														<select class="select2" name="position" style="width: 100%"></select>
+														<select class="select2" name="position" id="position" style="width: 100%"></select>
 													</div>
 												</div>
 
 												<div class="col-md-3 col-xs-3">
 													<div class="form-group">
 														<label class="font-weight-bold">Date Hired</label>
-														<input type="date" class="form-control-sm form-control" name="date_hired">
+														<input type="date" class="form-control-sm form-control" name="date_hired"  id="date_hired">
+													</div>
+												</div>
+												<div class="col-md-3 col-xs-3">
+													<div class="form-group">
+														<label class="font-weight-bold">Profit Center (Primary)</label>
+														<select class="select2" name="profit_center_primary" id="profit_center_primary" style="width: 100%">
+															
+														</select>
 													</div>
 												</div>
 
 												<div class="col-md-3 col-xs-3">
 													<div class="form-group">
+														<label class="font-weight-bold">Profit Center (Secondary)</label>
+														<select class="select2" name="profit_center_secondary" id="profit_center_secondary" style="width: 100%">
+															
+														</select>
+													</div>
+												</div>
+												<div class="col-md-3 col-xs-3">
+													<div class="form-group">
 														<label class="font-weight-bold">Employee Status</label>
-														<select class="select2" name="employee_status" style="width: 100%">
-															<option value="Probationary">Probationary</option>
-															<option value="Regular">Regular</option>
+														<select class="select2" name="employee_status" id="employee_status" style="width: 100%">
+															@foreach($departments as $dept)
+																<option value = "{{$dept->id}}">{{$dept->name}}</option>
+															@endforeach
 														</select>
 													</div>
 												</div>
@@ -211,7 +236,7 @@
 												<div class="col-md-3 col-xs-3">
 													<div class="form-group">
 														<label class="font-weight-bold">Employment Status</label>
-														<select class="select2" name="employment_status" style="width: 100%">
+														<select class="select2" name="employment_status"  id="employment_status" style="width: 100%">
 															<option value="Active">Active</option>
 															<option value="Inactive">Inactive</option>
 															<option value="Seperated">Seperated</option>
@@ -222,7 +247,7 @@
 												<div class="col-md-3 col-xs-3">
 													<div class="form-group">
 														<label class="font-weight-bold">Leave Credits</label>
-														<input type="number" class="form-control" name="leave_credits">
+														<input type="number" class="form-control" name="leave_credits"  id="leave_credits">
 													</div>
 												</div>
 
@@ -240,28 +265,28 @@
 												<div class="col-md-3 col-xs-3">
 													<div class="form-group">
 														<label class="font-weight-bold">Tax Identification Number</label>
-														<input type="text" class="form-control form-control-sm" name="tin">
+														<input type="text" class="form-control form-control-sm" name="tin" id="tin">
 													</div>
 												</div>
 
 												<div class="col-md-3 col-xs-3">
 													<div class="form-group">
 														<label class="font-weight-bold">Social Security System Number</label>
-														<input type="text" class="form-control form-control-sm" name="sss">
+														<input type="text" class="form-control form-control-sm" name="sss" id="sss">
 													</div>
 												</div>
 
 												<div class="col-md-3 col-xs-3">
 													<div class="form-group">
 														<label class="font-weight-bold">PhilHealth Number</label>
-														<input type="text" class="form-control form-control-sm" name="philhealth">
+														<input type="text" class="form-control form-control-sm" name="philhealth" id="philhealth">
 													</div>
 												</div>
 
 												<div class="col-md-3 col-xs-3">
 													<div class="form-group">
 														<label class="font-weight-bold">PagIBIG Number</label>
-														<input type="text" class="form-control form-control-sm" name="pagibig">
+														<input type="text" class="form-control form-control-sm" name="pagibig" id="pagibig">
 													</div>
 												</div>
 
@@ -272,7 +297,7 @@
 												<div class="col-md-12 col-xs-12">
 													<div class="form-group">
 														<label class="font-weight-bold">Reason for Leaving</label>
-														<textarea class="form-control" name="reason_for_leaving"></textarea>
+														<textarea class="form-control" name="reason_for_leaving"  id="reason_for_leaving""></textarea>
 													</div>
 												</div>
 											</div>
@@ -289,12 +314,12 @@
 
 												<div class="col-md-6 col-xs-6">
 													<label class="font-weight-bold">Present Address</label>
-													<textarea class="form-control form-control-sm" name="present_address"></textarea>
+													<textarea class="form-control form-control-sm" name="present_address" id="present_address"></textarea>
 												</div>
 
 												<div class="col-md-6 col-xs-6">
 													<label class="font-weight-bold">Permanent Address</label>
-													<textarea class="form-control form-control-sm" name="permanent_address"></textarea>
+													<textarea class="form-control form-control-sm" name="permanent_address" id="permanent_address"></textarea>
 												</div>
 
 											</div>
@@ -302,14 +327,15 @@
 											<div class="row">
 
 												<div class="col-md-3 col-xs-3">
-													<label class="font-weight-bold">City</label>
-													<select class="select2" name="city" style="width: 100%"></select>
+													<label class="font-weight-bold">Province</label>
+													<select class="select2" name="province" id = "province" style="width: 100%"></select>
 												</div>
 
 												<div class="col-md-3 col-xs-3">
-													<label class="font-weight-bold">Province</label>
-													<select class="select2" name="province" style="width: 100%"></select>
+													<label class="font-weight-bold">City</label>
+													<select class="select2" name="city" id="city" style="width: 100%"></select>
 												</div>
+
 
 											</div>
 
@@ -326,28 +352,28 @@
 												<div class="col-md-3 col-xs-3">
 													<div class="form-group">
 														<label class="font-weight-bold">Mobile Number</label>
-														<input type="text" class="form-control-sm form-control" name="mobile">
+														<input type="text" class="form-control-sm form-control" name="mobile" id="mobile">
 													</div>
 												</div>
 
 												<div class="col-md-3 col-xs-3">
 													<div class="form-group">
 														<label class="font-weight-bold">Telephone Number</label>
-														<input type="text" class="form-control-sm form-control" name="telephone">
+														<input type="text" class="form-control-sm form-control" name="telephone" id="telephone">
 													</div>
 												</div>
 
 												<div class="col-md-3 col-xs-3">
 													<div class="form-group">
 														<label class="font-weight-bold">Personal Email Address</label>
-														<input type="email" class="form-control-sm form-control" name="personal_email">
+														<input type="email" class="form-control-sm form-control" name="personal_email"  id="personal_email">
 													</div>
 												</div>
 
 												<div class="col-md-3 col-xs-3">
 													<div class="form-group">
 														<label class="font-weight-bold">Company Email Address</label>
-														<input type="email" class="form-control-sm form-control" name="company_email">
+														<input type="email" class="form-control-sm form-control" name="company_email" id="company_email">
 													</div>
 												</div>
 
@@ -365,21 +391,21 @@
 												<div class="col-md-4 col-xs-4">
 													<div class="form-group">
 														<label class="font-weight-bold">Contact Person</label>
-														<input type="text" class="form-control-sm form-control" name="contact_person">
+														<input type="text" class="form-control-sm form-control"  name="contact_person" id="contact_person">
 													</div>
 												</div>
 
 												<div class="col-md-4 col-xs-4">
 													<div class="form-group">
 														<label class="font-weight-bold">Contact Number</label>
-														<input type="text" class="form-control-sm form-control" name="contact_num">
+														<input type="text" class="form-control-sm form-control" name="contact_num" id="contact_num">
 													</div>
 												</div>
 
 												<div class="col-md-4 col-xs-4">
 													<div class="form-group">
 														<label class="font-weight-bold">Relationship</label>
-														<input type="text" class="form-control-sm form-control" name="relationship">
+														<input type="text" class="form-control-sm form-control" name="relationship" id="relationship">
 													</div>
 												</div>
 											</div>
@@ -396,18 +422,18 @@
 
 												<div class="col-md-3 col-xs-3">
 													<label class="font-weight-bold">Bank</label>
-													<input type="text" class="form-control form-control-sm" name="bank">
+													<input type="text" class="form-control form-control-sm" name="bank" id="bank">
 
 												</div>
 
 												<div class="col-md-3 col-xs-3">
 													<label class="font-weight-bold">Basic Salary</label>
-													<input type="text" class="form-control form-control-sm" name="basic_salary">
+													<input type="text" class="form-control form-control-sm" name="basic_salary" id="basic_salary">
 												</div>
 
 												<div class="col-md-3 col-xs-3">
 													<label class="font-weight-bold">Time Interpretation</label>
-													<input type="text" class="form-control form-control-sm" name="time_interpretation">
+													<input type="text" class="form-control form-control-sm" name="time_interpretation" id="time_interpretation">
 												</div>
 
 												<div class="col-md-3 col-xs-3">

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\violations;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use DB;
 
 class violationsController extends Controller
 {
