@@ -31,15 +31,15 @@ class branchController extends Controller
     } 
     Auth::user()->authorizeRoles($names); 
     $company_id = Auth::user()->company_id;
-       $branch = DB::table('company')
+        $branch = DB::table('company')
          ->join('branch' , 'company.id', '=','branch.company_id')
          ->select('company.name as name2','branch.name','branch.code','branch.id')
          ->where('branch.deleted_at',NULL)
          ->where('branch.company_id',$company_id)
          ->get();
+       $company = company::where('deleted_at',NULL)->get();
       
-       $company = company::where('deleted_at',NULL)->where('')->get();
-	 return view('pages.branch.view',compact('branch','company'));
+	 return view('settings.general_settings.branches',compact('branch','company'));
    }
 
    public function store(Request $request){
@@ -63,7 +63,8 @@ class branchController extends Controller
       }
    }
 
-   public function delete($branchID){
+   public function delete(Request $request){
+     $branchID = $request['branch_id_delete'];
    	 $delete_branch = Branch::where('id', $branchID)->update([
            'deleted_at' =>  Carbon::now()
         ]);

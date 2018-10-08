@@ -53,7 +53,7 @@ Route::group(['middleware' => ['auth']], function () {
 	//Save and Edit Branch
 	Route::post('/branch/create', 'branchController@store')->name('store.branch'); 
 	//Delete Branch
-	Route::get('/branch/delete/{branchID}', 'branchController@delete')->name('delete.branch');
+	Route::post('/branch/delete', 'branchController@delete')->name('delete.branch');
 
 	//View Departments
 	Route::get('/department', 'departmentController@index')->name('index.department');
@@ -75,6 +75,15 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::post('/violations/create', 'violationsController@store')->name('store.violations'); 
 	//Delete Employement Status
 	Route::post('/violations/delete', 'violationsController@delete')->name('delete.violations');
+
+
+	//View Batch
+	Route::get('/batch', 'batchController@index')->name('index.batch'); 
+	//Save and Edit Batch
+	Route::post('/batch/create', 'batchController@store')->name('store.batch'); 
+	//Delete Batch
+	Route::post('/batch/delete', 'batchController@delete')->name('delete.batch');
+
 
 	//Document Number Setup
 	Route::get('settings/ezpp/hris/document_number_setup', function(){

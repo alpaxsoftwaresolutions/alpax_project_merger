@@ -29,7 +29,8 @@ class empstatusController extends Controller
 			$names[] = $auth->name ; 
 		} 
 		Auth::user()->authorizeRoles($names);
-		$status =  empstatus::where('deleted_at',NULL)->get();
+		$company_id = Auth::user()->company_id;
+		$status =  empstatus::where('deleted_at',NULL)->where('company_id',$company_id)->get();
 		$departments = Department::where('deleted_at',NULL)->get();
     	return  view('settings.ezpp.hris.employment_status',compact('status','departments'));
 	}
