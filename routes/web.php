@@ -53,7 +53,11 @@ Route::group(['middleware' => ['auth']], function () {
 	//Save and Edit Branch
 	Route::post('/branch/create', 'branchController@store')->name('store.branch'); 
 	//Delete Branch
+<<<<<<< HEAD
 	Route::post('/branch/delete', 'branchController@delete')->name('delete.branch');
+=======
+	Route::post('/branch/delete/', 'branchController@delete')->name('delete.branch');
+>>>>>>> a80c333d7a3e2f4c785acebcdb01df31d2cf4488
 
 	//View Departments
 	Route::get('/department', 'departmentController@index')->name('index.department');
