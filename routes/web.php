@@ -53,11 +53,9 @@ Route::group(['middleware' => ['auth']], function () {
 	//Save and Edit Branch
 	Route::post('/branch/create', 'branchController@store')->name('store.branch'); 
 	//Delete Branch
-<<<<<<< HEAD
+
 	Route::post('/branch/delete', 'branchController@delete')->name('delete.branch');
-=======
-	Route::post('/branch/delete/', 'branchController@delete')->name('delete.branch');
->>>>>>> a80c333d7a3e2f4c785acebcdb01df31d2cf4488
+
 
 	//View Departments
 	Route::get('/department', 'departmentController@index')->name('index.department');
@@ -87,6 +85,14 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::post('/batch/create', 'batchController@store')->name('store.batch'); 
 	//Delete Batch
 	Route::post('/batch/delete', 'batchController@delete')->name('delete.batch');
+
+	//View Position
+	Route::get('/position', 'positionController@index')->name('index.position');
+	//Save and Edit Position
+	Route::post('/position/create', 'positionController@store')->name('store.position'); 
+	//Delete Position
+	Route::post('/position/delete', 'positionController@delete')->name('delete.position');
+
 
 
 	//Document Number Setup
@@ -131,12 +137,14 @@ Route::group(['middleware' => ['auth']], function () {
 
 	//Settings -> EZPP -> Payroll
 
-	//Payroll Configuration
-	Route::get('/settings/ezpp/payroll/payroll_configuration', 'PayrollConfigurationController@index')->name('index.payroll_configuration');
-
-	Route::post('/settings/ezpp/payroll/payroll_configuration/create', 'PayrollConfigurationController@store')->name('store.payroll_configuration');
-
-	Route::get('/settings/ezpp/payroll/payroll_configuration/delete/{config_id}', 'PayrollConfigurationController@delete')->name('delete.payroll_configuration');
+		//Time interpretation
+	Route::get('/time_interpretation', 'TimeInterpretationController@index')->name('index.time_interpretations');
+	Route::post('/time_interpretation', 'TimeInterpretationController@store')->name('store.time_interpretations');
+	Route::get('/time_interpretation/delete/{interpretation_id}', 'TimeInterpretationController@delete')->name('delete.time_interpretations');
+	//Payroll Config
+	Route::get('payroll_period', 'PayrollPeriodController@index')->name('index.payroll_period');
+	Route::post('payroll_period', 'PayrollPeriodController@store')->name('store.payroll_period');
+	Route::get('payroll_period/delete/{period_id}', 'PayrollPeriodController@delete')->name('delete.payroll_period');
 
 		//GL Accounts
 	Route::get('settings/financials/gl_determination', function(){

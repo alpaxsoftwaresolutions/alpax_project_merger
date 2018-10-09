@@ -79,7 +79,7 @@
 							@endfor
 							<td class="line-left">
 								<button class="btn btn-primary btn-sm open-edit" data-id ="{{ $config->id }}"><i class="fa fa-edit"></i></button>
-								<a class="btn btn-danger btn-sm" href="/settings/ezpp/payroll/payroll_configuration/delete/{{ $config->id }}" title="Delete Module" ><i class="fa fa-trash-alt"></i></button>
+								<button class="btn btn-danger btn-sm open-delete-modal" value="payroll_configuration/delete/{{ $config->id }}" title="Delete Module" ><i class="fa fa-trash-alt"></i></button>
 							</td>
 						</tr>
 						@php
@@ -246,7 +246,37 @@
 	</div>
 </div>
 <!-- Create Payroll Configuration Modal -->
+<!-- delete Department Modal -->
+<div class="modal fade" id="m_delete" role="dialog" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+		<div class="modal-content">
 
+			<div class="modal-header">
+				<h5 class="modal-title">Delete Payroll Configuration</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+
+			<div class="modal-body">
+				<div class="row">
+
+					<div class="col-lg-12 text-center">
+						<p class="">Are you sure you want to delete this?</p>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="modal-footer">
+				<a class="btn btn-danger" id="confirm_delete">Yes</a>
+				<button class="btn btn-secondary" data-dismiss="modal">No</button>
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- delete Department Modal -->
 <script type="text/javascript">
 	$(":checkbox").on('change', function(){
 		if(this.checked)
@@ -258,6 +288,12 @@
 	  	$("#form").trigger('reset');
 		$("input[name='config_id']").val(0);
 	});
+
+	$(".open-delete-modal").on('click',function(){
+		$("#confirm_delete").attr("href",$(this).val());
+		$("#m_delete").modal('show');
+	});
+
 	$(".open-edit").on('click',function(){
 		var row = $(this).closest('tr').find('td');
 		$("input[name='config_id']").val(row.eq(0).data('value'));
@@ -266,7 +302,6 @@
 		$("input[name='working_day_per_hour']").val(row.eq(2).text());
 		$("select[name='pay_frequency']").val(row.eq(3).text()).trigger('change');
 		$("select[name='time_interpretation']").val(row.eq(4).text()).trigger('change');
-		console.log(row.eq(5).data('value'));
 		if(row.eq(5).data('value') == 1){
 			$("input[name='wt_1']").val(row.eq(5).data('value'));
 			$("input[name='wt_1']").prop('checked',true);

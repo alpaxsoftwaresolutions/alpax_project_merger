@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
 
-<<<<<<< HEAD
+
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-2 mb-2">
     <div class="row">
       <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -46,50 +46,6 @@
       </tbody>
     </table>
   </div>
-=======
-	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-2 mb-2">
-		<div class="row">
-			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-				<h3>Branch</h3>
-			</div>
-
-			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-				<button class="btn btn-primary float-right" title="Add Branch" data-toggle="modal" data-target="#m_create_branch"><i class="fa fa-plus"></i> Add Branch</button>
-			</div>
-		</div>
-		<hr>
-	</div>
-	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-2 mb-2">
-		<table id="branch_table" class="table" style="width: 100%">
-			<thead>
-				<tr>
-					<th>Name</th>
-					<th>Code</th>
-					<th>Company Name</th> 
-					<th>Action</th> 
-				</tr>
-			</thead>
-			<tbody>
-				@foreach($branch as $branchs)
-				<tr>
-					<td>{{$branchs->name}}</td>
-					<td> {{$branchs->code}}</td>
-					<td>{{$branchs->name2}}</td>
-					<td>
-						<button class="btn btn-sm btn-primary open-edit"  title="Edit Branch" 
-						data-toggle="modal" 
-						data-target="#m_edit_branch"
-						data-id = "{{$branchs->id}}"
-						data-name = "{{$branchs->name}}"
-						data-code = "{{$branchs->code}}"><i class="fa fa-users-cog"></i></button>
-						<button data-id="{{$branchs->id}}" class="btn btn-sm btn-danger text-light open-delete" data-toggle="modal" data-target="#m_delete_branch" {{-- href = "/branch/delete/{{$branchs->id}}" --}} title="Delete Module"><i class="fa fa-minus"></i></button>
-					</td>
-				</tr>
-				@endforeach
-			</tbody>
-		</table>
-	</div>
->>>>>>> a80c333d7a3e2f4c785acebcdb01df31d2cf4488
 </div>
 
 <!-- Create Modal -->
@@ -203,7 +159,7 @@
 
 <!-- Delete Modal -->
 <div class="modal fade" id="m_delete_branch" role="dialog" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-<<<<<<< HEAD
+
   <div class="modal-dialog modal-dialog-centered modal-fluid" role="document">
     <div class="modal-content">
 
@@ -241,7 +197,7 @@
 
     </div>
   </div>
-=======
+
 	<div class="modal-dialog modal-dialog-centered modal-fluid" role="document">
 		<div class="modal-content">
 
@@ -279,7 +235,7 @@
 
 		</div>
 	</div>
->>>>>>> a80c333d7a3e2f4c785acebcdb01df31d2cf4488
+
 </div>
 <!-- Delete Modal -->
 
@@ -288,25 +244,7 @@
 	$("#company_id").select2();
 </script>
 <script>
-<<<<<<< HEAD
-  $(document).on("click", ".open-edit", function () {
-    var myauthId = $(this).data('id');
-    var myauthOrder = $(this).data('name');
-    var myauthPath = $(this).data('code');
 
-    $(".modal-body #branch_id_edit").val( myauthId );
-    $(".modal-body #branch_name_edit").val( myauthOrder );
-    $(".modal-body #branch_code_edit").val( myauthPath );
-
-     // As pointed out in comments, 
-     // it is superfluous to have to manually call the modal.
-     // $('#addBookDialog').modal('show');
- });
-
-  $(document).on("click", ".open-delete", function () {
-    var myauthId = $(this).data('id');
-    $(".modal-body #batches_id_delete").val( myauthId );
-=======
 	$(document).on("click", ".open-edit", function () {
 		var myauthId = $(this).data('id');
 		var myauthOrder = $(this).data('name');
@@ -324,21 +262,21 @@
 	$(document).on("click", ".open-delete", function () {
 		var myauthId = $(this).data('id');
 		$(".modal-body #batches_id_delete").val( myauthId );
->>>>>>> a80c333d7a3e2f4c785acebcdb01df31d2cf4488
+
 
      // As pointed out in comments, 
      // it is superfluous to have to manually call the modal.
      // $('#addBookDialog').modal('show');
  });
 
-<<<<<<< HEAD
+
   $("#submit_delete_batches").on("click", function(){
     $("#delete_batches").submit();
   }); 
-=======
+
 	$("#submit_delete_batches").on("click", function(){
 		$("#delete_batches").submit();
 	});	
->>>>>>> a80c333d7a3e2f4c785acebcdb01df31d2cf4488
+
 </script>
 @endsection

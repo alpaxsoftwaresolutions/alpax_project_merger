@@ -91,11 +91,23 @@
 								<label for="auth_order">Order ID</label>
 								<input type="number" class="form-control textboxes" name="auth_order" id="auth_order" value="{{ old('auth_order') }}">
 							</div>
-							<div class="form-group">
-								<label for="auth_icon">Icon</label>
-								<input type="text" class="form-control textboxes" name="auth_icon" id="auth_icon" value="{{ old('auth_icon') }}">
+							<div class="form-group mb-2">
+								<label for="auth_icon">Icon</label><br>
+								<div class="btn-group btn-block">
+									<button id="picker" data-selected="graduation-cap" type="button"
+									class="icp icp-dd btn btn-secondary btn-block dropdown-toggle iconpicker-component"
+									data-toggle="dropdown" style="width: 100%;">
+									<i id="icon" class="fa fa-fw"></i>
+									<span class="caret"></span>
+								</button>
+								<div class="dropdown-menu"></div>
 							</div>
-							<div class="form-group">
+							<div class="form-group d-none">
+								<label for="auth_icon">Icon</label>
+								<input type="hidden" class="form-control textboxes" name="auth_icon" id="auth_icon" value="{{ old('auth_icon') }}">
+							</div>
+							<div class="form-group mt-2">
+								<label>Parent</label>
 								<select id = "auth_parent" name = "auth_parent" class="select2" style="width: 100%">
 									<option value = "0">Main Module</option>
 									@foreach($auths as $auth)
@@ -108,7 +120,7 @@
 								</select>
 								<div class="form-group mt-2">
 									<label for="auth_path">Path</label>
-									<input type="text" class="form-control textboxes" name="auth_icon" id="auth_path" value="{{ old('auth_path') }}">
+									<input type="text" class="form-control textboxes" name="auth_path" id="auth_path" value="{{ old('auth_path') }}">
 								</div>
 
 							</div>
@@ -161,7 +173,18 @@
 								<label for="auth_order_edit">Order ID</label>
 								<input type="number" class="form-control textboxes" name="auth_order_edit" id="auth_order_edit" >
 							</div>
-							<div class="form-group">
+							<div class="form-group mb-2">
+								<label for="auth_icon">Icon</label><br>
+								<div class="btn-group btn-block">
+									<button id="picker" data-selected="graduation-cap" type="button"
+									class="icp icp-dd btn btn-secondary btn-block dropdown-toggle iconpicker-component"
+									data-toggle="dropdown" style="width: 100%;">
+									<i id="edit_icon" class="fa fa-fw"></i>
+									<span class="caret"></span>
+								</button>
+								<div class="dropdown-menu edit-icon"></div>
+							</div>
+							<div class="form-group d-none">
 								<label for="authauth_icon_edit_icon">Icon</label>
 								<input type="text" class="form-control textboxes" name="auth_icon_edit" id="auth_icon_edit" >
 							</div>
@@ -260,6 +283,10 @@
 	$("#auth_parent_edit").select2();
 </script>
 <script>
+	$('.icp-dd').iconpicker({
+        //title: 'Dropdown with picker',
+        //component:'.btn > i'
+    });
 	$(document).on("click", ".open-edit", function () {
 		var myauthId = $(this).data('id');
 		var myauthOrder = $(this).data('order');
@@ -302,6 +329,18 @@
 		else{
 			$(".modal-body #writable").removeAttr("checked", "false"); 
 		}
+	});
+
+	$(".dropdown-menu").on("click", function(){
+		var a = $("#icon").attr("class");
+		$("#auth_icon").val(a);
+		console.log(a);
+	});
+
+	$(".edit-icon").on("click", function(){
+		var a = $("#edit_icon").attr("class");
+		$("#auth_icon_edit").val(a);
+		console.log(a);
 	});
 </script>
 @endsection

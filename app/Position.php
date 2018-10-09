@@ -4,8 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Batch extends Model
+class Position extends Model
 {
     protected $primaryKey = 'id';
-    protected $table = 'batch'; 
+    protected $table = 'position'; 
 }

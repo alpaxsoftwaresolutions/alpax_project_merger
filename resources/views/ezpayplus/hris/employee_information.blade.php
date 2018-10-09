@@ -59,7 +59,11 @@
 					<div class="col-lg-3 col-xs-3">
 						<div class="form-group">
 							<label class="font-weight-bold">Batch</label>
-							<select class="select2" name="batch" id="batch" style="width: 100%"></select>
+							<select class="select2" name="batch" id="batch" style="width: 100%">
+								@foreach($batch as $batches)
+									<option value = "{{$batches->id}}">{{$batches->name}}</option>
+								@endforeach
+							</select>
 						</div>
 					</div>
 
@@ -228,8 +232,8 @@
 													<div class="form-group">
 														<label class="font-weight-bold">Employee Status</label>
 														<select class="select2" name="employee_status" id="employee_status" style="width: 100%">
-															@foreach($departments as $dept)
-															<option value = "{{$dept->id}}">{{$dept->name}}</option>
+															@foreach($emp_status as $emp)
+															<option value = "{{$emp->id}}">{{$emp->name}}</option>
 															@endforeach
 														</select>
 													</div>

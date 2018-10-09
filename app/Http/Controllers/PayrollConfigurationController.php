@@ -8,7 +8,6 @@ use Illuminate\View\View;
 use DB;
 use App\PayrollConfiguration;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
 
 class PayrollConfigurationController extends Controller
 {
@@ -44,7 +43,7 @@ class PayrollConfigurationController extends Controller
             $msg = "New Payroll Configuration Created";
         }
         else{
-            $config = PayrollConfiguration::find(4);
+            $config = PayrollConfiguration::find($request['config_id']);
             $msg = "Payroll Configuration Editted";
         }
         $config->code = $request['code'];

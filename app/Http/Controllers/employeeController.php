@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\empstatus;
 use App\Employee;
 use App\Department;
 use App\Branch;
+use App\Batch;
+use App\empstatus;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use DB;
@@ -32,9 +33,11 @@ class employeeController extends Controller
 		} 
 		Auth::user()->authorizeRoles($names);
 		$employee =  Employee::where('deleted_at',NULL)->get();
+		$emp_status =  empstatus::where('deleted_at',NULL)->get();
+		$batch =  Batch::where('deleted_at',NULL)->get();
 		$departments = Department::where('deleted_at',NULL)->get();
 		$branch = Branch::where('deleted_at',NULL)->get();
-    	return  view('ezpayplus.hris.employee_information',compact('employee','departments','branch'));
+    	return  view('ezpayplus.hris.employee_information',compact('employee','departments','branch','batch','emp_status'));
    	}
    	public function store(){
    		if(request()->has('employee_id_edit')){
